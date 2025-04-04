@@ -6,7 +6,7 @@ interface ApiKeyContextType {
   apiKey: string | null;
   setApiKey: (key: string) => void;
   isKeyValid: boolean;
-  checkKeyValidity: () => Promise<boolean>;
+  checkKeyValidity: (key?: string) => Promise<boolean>;
 }
 
 const ApiKeyContext = createContext<ApiKeyContextType | undefined>(undefined);
@@ -45,7 +45,7 @@ export const ApiKeyProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         toast({
           title: "API Key Validated",
           description: "Your OpenAI API key has been successfully validated.",
-          variant: "success"
+          variant: "default"
         });
       } else if (!valid) {
         toast({
