@@ -9,13 +9,13 @@ import NotFound from "./pages/NotFound";
 import ProfileCreator from "./pages/ProfileCreator";
 import DatabasePage from "./pages/DatabasePage";
 import { Layout } from "./components/Layout";
-import Providers from "./components/Providers";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <Providers>
+    <ThemeProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -30,7 +30,7 @@ const App = () => (
           </Layout>
         </BrowserRouter>
       </TooltipProvider>
-    </Providers>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 

@@ -1,17 +1,14 @@
-
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent } from '@/components/ui/card';
-import { FileText, Youtube, Globe, Linkedin, BookOpen, ArrowRight, AlertCircle } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { useApiKey } from '@/contexts/ApiKeyContext';
 import { useToast } from '@/hooks/use-toast';
 import ContentUploader from '@/components/ContentUploader';
 import SpeakerProfile from '@/components/SpeakerProfile';
+import { analyzeContent } from '@/services/openaiService';
 
 interface ProfileData {
   topics: string[];
@@ -22,7 +19,6 @@ interface ProfileData {
 }
 
 const ProfileCreator = () => {
-  const { apiKey } = useApiKey();
   const { toast } = useToast();
   const [inputUrls, setInputUrls] = useState({
     pdfUrl: '',
@@ -46,15 +42,6 @@ const ProfileCreator = () => {
   };
 
   const handleAnalyze = async () => {
-    if (!apiKey) {
-      toast({
-        title: "API Key Required",
-        description: "Please provide your OpenAI API key to continue",
-        variant: "destructive"
-      });
-      return;
-    }
-
     // Check if at least one input is provided
     const hasInput = pdfFile || Object.values(inputUrls).some(url => url.trim() !== '');
     if (!hasInput) {
@@ -70,29 +57,20 @@ const ProfileCreator = () => {
     setProfileData({ topics: [], personality: [], summary: '', isLoading: true });
     setCurrentStep('profile');
 
-    // Simulate API call and processing for demonstration
     try {
-      // In a real implementation, you would upload the file and process inputs here
-      // For now, we'll simulate a delay and return mock data
-      await new Promise(resolve => setTimeout(resolve, 3000));
-
-      // Mock data for demonstration
+      // Build content object to analyze
+      const contentToAnalyze = {
+        file: pdfFile,
+        urls: inputUrls
+      };
+      
+      // Call our service to analyze content
+      const result = await analyzeContent(contentToAnalyze);
+      
       setProfileData({
-        summary: "Dr. Jane Smith is an accomplished speaker with expertise in artificial intelligence ethics and technology policy. Her communication style is engaging, clear, and thought-provoking, appealing to both technical and non-technical audiences.",
-        topics: [
-          "AI Ethics",
-          "Technology Policy",
-          "Future of Work",
-          "Digital Transformation",
-          "Data Privacy"
-        ],
-        personality: [
-          "Analytical",
-          "Insightful",
-          "Engaging",
-          "Authoritative",
-          "Approachable"
-        ]
+        summary: result.summary,
+        topics: result.topics,
+        personality: result.personality
       });
 
       toast({
@@ -138,7 +116,6 @@ const ProfileCreator = () => {
 
         <TabsContent value="input" className="space-y-6 min-h-[60vh]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* PDF Upload */}
             <ContentUploader 
               icon={<FileText className="h-5 w-5 text-findmystage-green" />}
               title="PDF Documents"
@@ -151,8 +128,7 @@ const ProfileCreator = () => {
                 placeholder: "Or paste a link to a PDF document"
               }}
             />
-
-            {/* YouTube */}
+            
             <ContentUploader 
               icon={<Youtube className="h-5 w-5 text-findmystage-green" />}
               title="YouTube Content"
@@ -165,7 +141,6 @@ const ProfileCreator = () => {
               }}
             />
 
-            {/* Website */}
             <ContentUploader 
               icon={<Globe className="h-5 w-5 text-findmystage-green" />}
               title="Website"
@@ -178,7 +153,6 @@ const ProfileCreator = () => {
               }}
             />
 
-            {/* LinkedIn */}
             <ContentUploader 
               icon={<Linkedin className="h-5 w-5 text-findmystage-green" />}
               title="LinkedIn Profile"
@@ -191,7 +165,6 @@ const ProfileCreator = () => {
               }}
             />
 
-            {/* Book */}
             <ContentUploader 
               icon={<BookOpen className="h-5 w-5 text-findmystage-green" />}
               title="Books"
