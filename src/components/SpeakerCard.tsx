@@ -33,14 +33,14 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({
   return (
     <div className="speaker-card-container">
       <Card className={`speaker-card w-full overflow-hidden shadow-lg border ${borderClass}`}>
-        <CardContent className="p-4">
-          <div className="flex items-start gap-4">
-            <Avatar className="h-16 w-16 rounded-full border-2 border-white/50 shadow-lg flex-shrink-0">
+        <CardContent className="p-3">
+          <div className="flex items-start gap-3">
+            <Avatar className="h-14 w-14 rounded-full border-2 border-white/50 shadow-lg flex-shrink-0">
               <AvatarImage src={avatarSrc} alt={name} className="object-cover" />
               <AvatarFallback>{name.charAt(0)}</AvatarFallback>
             </Avatar>
             
-            <div className="space-y-2 w-full">
+            <div className="space-y-1 w-full">
               <div className="flex justify-between items-start">
                 <div>
                   <div className="flex items-center gap-2">
