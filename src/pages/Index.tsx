@@ -193,6 +193,50 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Speaker Opportunity Section - New section based on image */}
+      <section className="py-16 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              {/* Left column - Image */}
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <img 
+                  src="/lovable-uploads/1dbe0683-8daa-4375-9185-bfaa23aff8c9.png" 
+                  alt="Speaker addressing an audience" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <div className="w-40 h-1 bg-findmystage-green mb-2"></div>
+                  <p className="text-white text-sm font-medium">AUTHORITY FUSION</p>
+                </div>
+              </div>
+              
+              {/* Right column - Content */}
+              <div className="space-y-6 px-4 md:px-8">
+                <h2 className="text-5xl font-bold">Speakers</h2>
+                <p className="text-3xl font-medium">We find targeted stages for you.</p>
+                
+                <div className="space-y-4">
+                  <p className="text-lg">
+                    We send you upcoming speaker opportunities <span className="font-bold">before they are announced</span>. 
+                    Save yourself from countless hours of research, dead end opportunities, and stop 
+                    spending thousands of dollars "chasing."
+                  </p>
+                  
+                  <p className="text-lg">
+                    With over 70,000 targeted speaking opportunities, your stage is just a phone call away.
+                  </p>
+                </div>
+                
+                <Button asChild size="lg" className="rounded-full mt-4 bg-findmystage-green hover:bg-findmystage-green/90">
+                  <Link to="/profile">Find Your Stage <ArrowRight className="ml-2" /></Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Three Column Features */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
