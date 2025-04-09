@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -643,39 +644,45 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Case Studies Carousel */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Case Studies</h2>
             <p className="text-muted-foreground max-w-3xl mx-auto">
-              See how speakers, authors, and experts have used FindMyStage to grow their personal brand and business.
+              See how speakers, authors, and experts have used Authority Fusion to grow their personal brand and business.
             </p>
           </div>
           
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[1, 2, 3].map((index) => (
-                <div key={index} className="bg-card rounded-xl p-6 border animate-fade-in" style={{ animationDelay: `0.${index}s` }}>
-                  <div className="h-40 bg-muted rounded-lg mb-6 flex items-center justify-center">
-                    <Users size={40} className="text-muted-foreground/50" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">Client Name</h3>
-                  <p className="text-muted-foreground mb-4">
-                    "FindMyStage helped me book 12 speaking engagements in my first year and grow my email list by 400%."
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Speaker & Author</span>
-                    <Button variant="ghost" size="sm" asChild>
-                      <Link to="#">Read More</Link>
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <Carousel autoPlay={true} autoPlayInterval={5000} className="mb-8">
+              <CarouselContent>
+                {Array.from({ length: Math.ceil(caseStudies.length / 3) }).map((_, slideIndex) => (
+                  <CarouselItem key={slideIndex}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-1">
+                      {caseStudies.slice(slideIndex * 3, slideIndex * 3 + 3).map((study, index) => (
+                        <CaseStudyCard
+                          key={index}
+                          imageSrc={study.imageSrc}
+                          quote={study.quote}
+                          name={study.name}
+                          title={study.title}
+                        />
+                      ))}
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center mt-6">
+                <CarouselPrevious className="relative static mx-2 left-0 translate-y-0" />
+                <CarouselNext className="relative static mx-2 right-0 translate-y-0" />
+              </div>
+            </Carousel>
           </div>
         </div>
       </section>
+    </div>
+  );
+};
 
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className
+export default Index;
