@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
+import SpeakerCard from '@/components/SpeakerCard';
 
 const Index = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -87,6 +88,34 @@ const Index = () => {
       setEmail('');
     }, 1500);
   };
+
+  // Sample data for speaker cards
+  const speakerData = [
+    {
+      name: "Meguire Hennes",
+      category: "Biotech and Healthcare",
+      mediaOutlet: "Elite Daily",
+      requirement: "Please answer the question: What is pheromone perfume/oil?",
+      avatarSrc: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3",
+      logoSrc: "https://placehold.co/80x30/000000/FFFFFF/png?text=Elite+DAILY"
+    },
+    {
+      name: "Andre O. Newsbreak",
+      category: "Business and Finance",
+      mediaOutlet: "Newsbreak",
+      requirement: "I am looking for the best LinkedIn Company Page optimization tips from experts.",
+      avatarSrc: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3",
+      logoSrc: "https://placehold.co/80x30/FF5555/FFFFFF/png?text=NEWSBREAK"
+    },
+    {
+      name: "Nick Cullen",
+      category: "Business and Finance",
+      mediaOutlet: "SolutionSuggest.com",
+      requirement: "We are looking for Founders, CEOs, and Presidents to share their compelling brand stories.",
+      avatarSrc: "https://images.unsplash.com/photo-1487887235947-a955ef187fcc?ixlib=rb-4.0.3",
+      logoSrc: "https://placehold.co/80x30/333333/FFFFFF/png?text=SOLUTION"
+    }
+  ];
 
   return (
     <div className="relative">
@@ -207,102 +236,25 @@ const Index = () => {
                 </Button>
               </div>
               
-              <div className="relative h-[500px] border-l border-gray-200">
+              <div className="relative">
                 <div className="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-background px-4 py-2">
                   <p className="text-lg font-medium text-muted-foreground">1,469 JOURNALISTS SEEKING EXPERTS</p>
                 </div>
                 
-                <div className="absolute top-[50px] left-[50px] animate-[fade-in_1s,float-up-down_15s_ease-in-out_infinite]">
-                  <Card className="w-[350px] overflow-hidden shadow-lg border">
-                    <CardContent className="p-4">
-                      <div className="flex items-start gap-3">
-                        <div className="shrink-0">
-                          <img 
-                            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3"
-                            alt="Meguire Hennes" 
-                            className="h-12 w-12 rounded-full object-cover"
-                          />
-                        </div>
-                        <div className="space-y-1">
-                          <div className="flex justify-between items-start">
-                            <div>
-                              <p className="font-medium">Name: Meguire Hennes</p>
-                              <p className="text-sm text-muted-foreground">Category: Biotech and Healthcare</p>
-                              <p className="text-sm text-muted-foreground">Media Outlet: Elite Daily</p>
-                            </div>
-                            <div className="ml-2">
-                              <img src="https://placehold.co/80x30/000000/FFFFFF/png?text=Elite+DAILY" alt="Elite Daily logo" className="h-7" />
-                            </div>
-                          </div>
-                          <p className="text-sm">
-                            <span className="font-medium">Requirement:</span> Please answer the question: What is pheromone perfume/oil?
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-                
-                <div className="absolute top-[200px] left-[80px] animate-[fade-in_1s_0.2s,float-down-up_18s_ease-in-out_infinite]">
-                  <Card className="w-[350px] overflow-hidden shadow-lg border">
-                    <CardContent className="p-4">
-                      <div className="flex items-start gap-3">
-                        <div className="shrink-0">
-                          <img 
-                            src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3"
-                            alt="Andre O. Newsbreak" 
-                            className="h-12 w-12 rounded-full object-cover"
-                          />
-                        </div>
-                        <div className="space-y-1">
-                          <div className="flex justify-between items-start">
-                            <div>
-                              <p className="font-medium">Name: Andre O. Newsbreak</p>
-                              <p className="text-sm text-muted-foreground">Category: Business and Finance</p>
-                              <p className="text-sm text-muted-foreground">Media Outlet: Newsbreak</p>
-                            </div>
-                            <div className="ml-2">
-                              <img src="https://placehold.co/80x30/FF5555/FFFFFF/png?text=NEWSBREAK" alt="Newsbreak logo" className="h-7" />
-                            </div>
-                          </div>
-                          <p className="text-sm">
-                            <span className="font-medium">Requirement:</span> I am looking for the best LinkedIn Company Page optimization tips from experts.
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-                
-                <div className="absolute top-[350px] left-[50px] animate-[fade-in_1s_0.4s,float-up-down_20s_ease-in-out_infinite]">
-                  <Card className="w-[350px] overflow-hidden shadow-lg border">
-                    <CardContent className="p-4">
-                      <div className="flex items-start gap-3">
-                        <div className="shrink-0">
-                          <img 
-                            src="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?ixlib=rb-4.0.3"
-                            alt="Nick Cullen" 
-                            className="h-12 w-12 rounded-full object-cover"
-                          />
-                        </div>
-                        <div className="space-y-1">
-                          <div className="flex justify-between items-start">
-                            <div>
-                              <p className="font-medium">Name: Nick Cullen</p>
-                              <p className="text-sm text-muted-foreground">Category: Business and Finance</p>
-                              <p className="text-sm text-muted-foreground">Media Outlet: SolutionSuggest.com</p>
-                            </div>
-                            <div className="ml-2">
-                              <img src="https://placehold.co/80x30/333333/FFFFFF/png?text=SOLUTION" alt="Solution logo" className="h-7" />
-                            </div>
-                          </div>
-                          <p className="text-sm">
-                            <span className="font-medium">Requirement:</span> We are looking for Founders, CEOs, and Presidents to share their compelling brand stories.
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                <div className="speakers-display mt-12">
+                  <div className="speakers-row flex flex-nowrap space-x-6 overflow-x-auto pb-6">
+                    {speakerData.map((speaker, index) => (
+                      <SpeakerCard 
+                        key={index}
+                        name={speaker.name}
+                        category={speaker.category}
+                        mediaOutlet={speaker.mediaOutlet}
+                        requirement={speaker.requirement}
+                        avatarSrc={speaker.avatarSrc}
+                        logoSrc={speaker.logoSrc}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

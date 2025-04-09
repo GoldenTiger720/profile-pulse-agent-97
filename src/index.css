@@ -131,3 +131,31 @@
   }
 }
 
+/* Speaker card specific styles */
+.speakers-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.speaker-card-container {
+  width: 350px;
+  flex-shrink: 0;
+}
+
+.speaker-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.speaker-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.avatar-container {
+  margin-top: 0.5rem;
+}
+
+.avatar-container img {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
