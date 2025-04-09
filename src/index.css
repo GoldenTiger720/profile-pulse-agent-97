@@ -111,3 +111,23 @@
 .delay-500 {
   animation-delay: 500ms;
 }
+
+/* New floating animations for the journalist cards */
+@keyframes float-up-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes float-down-up {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+}
+

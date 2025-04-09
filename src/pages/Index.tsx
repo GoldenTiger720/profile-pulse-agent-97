@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -22,7 +21,6 @@ const Index = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     
-    // Set canvas dimensions
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -31,7 +29,6 @@ const Index = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    // Star properties
     const stars: { x: number; y: number; size: number; speed: number }[] = [];
     const generateStars = () => {
       stars.length = 0;
@@ -49,21 +46,17 @@ const Index = () => {
     
     generateStars();
     
-    // Animation
     const animateStars = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Draw stars
       stars.forEach(star => {
         ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fill();
         
-        // Move star
         star.y += star.speed;
         
-        // Reset star position if it moves off screen
         if (star.y > canvas.height) {
           star.y = 0;
           star.x = Math.random() * canvas.width;
@@ -84,7 +77,6 @@ const Index = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       toast({
@@ -98,13 +90,11 @@ const Index = () => {
 
   return (
     <div className="relative">
-      {/* Starry background */}
       <canvas 
         ref={canvasRef} 
         className="fixed inset-0 -z-10 pointer-events-none"
       />
       
-      {/* Hero Section */}
       <section className="py-20 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
@@ -118,7 +108,6 @@ const Index = () => {
                   that match their expertise, grow their audience, and increase their revenue.
                 </p>
                 
-                {/* Sign Up Form */}
                 <div className="max-w-md bg-card/30 backdrop-blur-sm p-6 rounded-xl border border-border/50 animate-fade-in" style={{ animationDelay: '0.4s' }}>
                   <form onSubmit={handleSignUp} className="space-y-4">
                     <div className="space-y-2">
@@ -166,9 +155,7 @@ const Index = () => {
               </div>
               <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
                 <div className="p-6 bg-findmystage-green/10 rounded-2xl border border-findmystage-green/30">
-                  <h2 className="text-3xl font-bold text-findmystage-green mb-4">
-                    AUTHORITY FUSION
-                  </h2>
+                  <h2 className="text-3xl font-bold">AUTHORITY FUSION</h2>
                   <p className="text-muted-foreground">
                     The AI-powered platform that helps you discover speaking opportunities
                     and grow your personal brand.
@@ -180,7 +167,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* What is FindMyStage Section */}
       <section className="py-16 bg-card/30 backdrop-blur-sm relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center mb-12">
@@ -193,12 +179,141 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Speaker Opportunity Section - New section based on image */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              {/* Left column - Image */}
+              <div className="space-y-6">
+                <h2 className="text-7xl font-bold">Media</h2>
+                <h3 className="text-4xl font-medium">Become a Media Maven.</h3>
+                
+                <p className="text-lg">
+                  Being interviewed by the media not only increases your outreach, but can establish your brand and 
+                  create high-powered connections.
+                </p>
+
+                <p className="text-lg">
+                  <span className="font-bold">Author</span><sup>*</sup><span className="font-bold">ity Fusion</span> members get FREE access to
+                  over 700 journalists, 769 radio producers, and get <span className="font-bold">DAILY inquiries from reporters</span> who need your
+                  expertise for their News stories.
+                </p>
+
+                <p className="text-lg">
+                  All members can access professional media training and "hot seat" reviews at no cost.
+                </p>
+                
+                <Button asChild size="lg" className="rounded-full mt-4 bg-findmystage-green hover:bg-findmystage-green/90">
+                  <Link to="/profile">Become a Media Maven <ArrowRight className="ml-2" /></Link>
+                </Button>
+              </div>
+              
+              <div className="relative h-[500px] border-l border-gray-200">
+                <div className="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-background px-4 py-2">
+                  <p className="text-lg font-medium text-muted-foreground">1,469 JOURNALISTS SEEKING EXPERTS</p>
+                </div>
+                
+                <div className="absolute top-[50px] left-[50px] animate-[fade-in_1s,float-up-down_15s_ease-in-out_infinite]">
+                  <Card className="w-[350px] overflow-hidden shadow-lg border">
+                    <CardContent className="p-4">
+                      <div className="flex items-start gap-3">
+                        <div className="shrink-0">
+                          <img 
+                            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3"
+                            alt="Meguire Hennes" 
+                            className="h-12 w-12 rounded-full object-cover"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <p className="font-medium">Name: Meguire Hennes</p>
+                              <p className="text-sm text-muted-foreground">Category: Biotech and Healthcare</p>
+                              <p className="text-sm text-muted-foreground">Media Outlet: Elite Daily</p>
+                            </div>
+                            <div className="ml-2">
+                              <img src="https://placehold.co/80x30/000000/FFFFFF/png?text=Elite+DAILY" alt="Elite Daily logo" className="h-7" />
+                            </div>
+                          </div>
+                          <p className="text-sm">
+                            <span className="font-medium">Requirement:</span> Please answer the question: What is pheromone perfume/oil?
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                
+                <div className="absolute top-[200px] left-[80px] animate-[fade-in_1s_0.2s,float-down-up_18s_ease-in-out_infinite]">
+                  <Card className="w-[350px] overflow-hidden shadow-lg border">
+                    <CardContent className="p-4">
+                      <div className="flex items-start gap-3">
+                        <div className="shrink-0">
+                          <img 
+                            src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3"
+                            alt="Andre O. Newsbreak" 
+                            className="h-12 w-12 rounded-full object-cover"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <p className="font-medium">Name: Andre O. Newsbreak</p>
+                              <p className="text-sm text-muted-foreground">Category: Business and Finance</p>
+                              <p className="text-sm text-muted-foreground">Media Outlet: Newsbreak</p>
+                            </div>
+                            <div className="ml-2">
+                              <img src="https://placehold.co/80x30/FF5555/FFFFFF/png?text=NEWSBREAK" alt="Newsbreak logo" className="h-7" />
+                            </div>
+                          </div>
+                          <p className="text-sm">
+                            <span className="font-medium">Requirement:</span> I am looking for the best LinkedIn Company Page optimization tips from experts.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                
+                <div className="absolute top-[350px] left-[50px] animate-[fade-in_1s_0.4s,float-up-down_20s_ease-in-out_infinite]">
+                  <Card className="w-[350px] overflow-hidden shadow-lg border">
+                    <CardContent className="p-4">
+                      <div className="flex items-start gap-3">
+                        <div className="shrink-0">
+                          <img 
+                            src="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?ixlib=rb-4.0.3"
+                            alt="Nick Cullen" 
+                            className="h-12 w-12 rounded-full object-cover"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <p className="font-medium">Name: Nick Cullen</p>
+                              <p className="text-sm text-muted-foreground">Category: Business and Finance</p>
+                              <p className="text-sm text-muted-foreground">Media Outlet: SolutionSuggest.com</p>
+                            </div>
+                            <div className="ml-2">
+                              <img src="https://placehold.co/80x30/333333/FFFFFF/png?text=SOLUTION" alt="Solution logo" className="h-7" />
+                            </div>
+                          </div>
+                          <p className="text-sm">
+                            <span className="font-medium">Requirement:</span> We are looking for Founders, CEOs, and Presidents to share their compelling brand stories.
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
                 <img 
                   src="/lovable-uploads/1dbe0683-8daa-4375-9185-bfaa23aff8c9.png" 
@@ -211,7 +326,6 @@ const Index = () => {
                 </div>
               </div>
               
-              {/* Right column - Content */}
               <div className="space-y-6 px-4 md:px-8">
                 <h2 className="text-5xl font-bold">Speakers</h2>
                 <p className="text-3xl font-medium">We find targeted stages for you.</p>
@@ -237,12 +351,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Three Column Features */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-              {/* Speakers Column */}
               <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
                 <h2 className="text-3xl font-bold">Speakers</h2>
                 <p className="text-muted-foreground">
@@ -268,7 +380,6 @@ const Index = () => {
                 </Button>
               </div>
 
-              {/* Media Column */}
               <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
                 <h2 className="text-3xl font-bold">Media</h2>
                 <p className="text-muted-foreground">
@@ -293,7 +404,6 @@ const Index = () => {
                 </div>
               </div>
 
-              {/* Community Column */}
               <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
                 <h2 className="text-3xl font-bold">Community</h2>
                 <p className="text-muted-foreground">
@@ -325,7 +435,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* How It Works Section */}
       <section className="py-16 bg-card/30 backdrop-blur-sm relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center mb-12">
@@ -334,7 +443,6 @@ const Index = () => {
           
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {/* Left column */}
               <div className="space-y-12">
                 <div className="flex gap-6 items-start animate-fade-in" style={{ animationDelay: '0.1s' }}>
                   <div className="w-28 h-36 bg-muted rounded-lg border flex items-center justify-center">
@@ -357,7 +465,6 @@ const Index = () => {
                 </div>
               </div>
               
-              {/* Right column */}
               <div className="space-y-12">
                 <div className="flex gap-6 items-start animate-fade-in" style={{ animationDelay: '0.3s' }}>
                   <div className="w-28 h-36 bg-muted rounded-lg border flex items-center justify-center">
@@ -384,7 +491,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Case Studies Section */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center mb-12">
@@ -418,7 +524,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Money Tree Section */}
       <section className="py-16 bg-card/30 backdrop-blur-sm relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -445,7 +550,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in">
