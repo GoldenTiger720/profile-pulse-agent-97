@@ -89,7 +89,6 @@ const Index = () => {
     }, 1500);
   };
 
-  // Sample data for speaker cards
   const speakerData = [
     {
       name: "Meguire Hennes",
@@ -241,11 +240,24 @@ const Index = () => {
                   <p className="text-lg font-medium text-muted-foreground">1,469 JOURNALISTS SEEKING EXPERTS</p>
                 </div>
                 
-                <div className="speakers-display mt-12">
-                  <div className="speakers-row flex flex-nowrap space-x-6 overflow-x-auto pb-6">
+                <div className="speakers-display">
+                  <div className="speakers-row">
                     {speakerData.map((speaker, index) => (
                       <SpeakerCard 
-                        key={index}
+                        key={`row1-${index}`}
+                        name={speaker.name}
+                        category={speaker.category}
+                        mediaOutlet={speaker.mediaOutlet}
+                        requirement={speaker.requirement}
+                        avatarSrc={speaker.avatarSrc}
+                        logoSrc={speaker.logoSrc}
+                      />
+                    ))}
+                  </div>
+                  <div className="speakers-row">
+                    {speakerData.map((speaker, index) => (
+                      <SpeakerCard 
+                        key={`row2-${index}`}
                         name={speaker.name}
                         category={speaker.category}
                         mediaOutlet={speaker.mediaOutlet}
