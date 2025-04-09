@@ -717,7 +717,7 @@ const Index = () => {
                         </button>
                         <button className="hover:text-findmystage-green transition-colors">
                           <span className="sr-only">Settings</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
                         </button>
                         <button className="hover:text-findmystage-green transition-colors">
                           <span className="sr-only">Fullscreen</span>
@@ -731,6 +731,37 @@ const Index = () => {
                   <div className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-1 rounded-md text-sm font-medium">
                     I FELT LIKE A PERSON THAT WAS <span className="text-findmystage-green font-bold">PREGNANT</span> FOR 10 YEARS
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 mt-16">
+          <Separator className="max-w-6xl mx-auto h-px bg-border/60" />
+        </div>
+      </section>
+
+      {/* New Personal Brand Section */}
+      <section className="py-16 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/a1284e51-8125-407c-a8be-392bcc3a3013.png" 
+                  alt="Wooden blocks representing growth of authority and brand" 
+                  className="w-full h-auto rounded-lg shadow-xl"
+                />
+              </div>
+              
+              <div className="space-y-8">
+                <h3 className="text-6xl font-bold">Per<span className="text-findmystage-green">$</span>onal Brand</h3>
+                <h4 className="text-3xl font-medium">$200,0000 increase in revenue</h4>
+                
+                <div className="space-y-4">
+                  <p className="text-lg italic">
+                    "Doug helped me publish two books. My first book, Super Hero Single Dad, took second place in Christian writers awards. My second book, ROL (Return on Life) with a foreword by Les Brown, became a Amazon <span className="font-bold">#1 bestseller</span>. Because of these two books, I've placed millions more under management, increased my revenue by $200K, and seen a measurable boost in my credibility."
+                  </p>
                 </div>
               </div>
             </div>
