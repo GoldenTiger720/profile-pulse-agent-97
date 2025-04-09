@@ -413,6 +413,48 @@ const Index = () => {
         </div>
       </section>
 
+      {/* New Success Stories Section */}
+      <section className="py-16 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto text-center mb-12">
+            <h2 className="text-5xl font-bold mb-4">DOES AUTHOR<span className="relative">*<span className="absolute -top-1 text-sm">ITY</span></span> FUSION WORK?</h2>
+            <p className="text-xl text-muted-foreground">
+              Here are a few success stories from our community.
+            </p>
+          </div>
+          
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/0ddcf5f3-5362-48ef-a866-0c9fd55fde15.png" 
+                  alt="Les Whitney's book - Cancer's Gifts" 
+                  className="w-full h-auto"
+                />
+              </div>
+              
+              <div className="space-y-8">
+                <h3 className="text-6xl font-bold">Keynotes</h3>
+                <h4 className="text-3xl font-medium">Two keynotes in the first 40 days</h4>
+                
+                <div className="space-y-4">
+                  <p className="text-lg">
+                    Les Whitney was a former Vistage chair who is living with brain and lung cancer. His incredible message of perseverance, acceptance, life & death caught the attention of Vistage international and the <span className="font-bold">American Cancer Society.</span>
+                  </p>
+                  
+                  <p className="text-lg">
+                    Within 2 months of publishing his first book, he landed 2 major keynotes at these organizations.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 mt-16">
+          <Separator className="max-w-6xl mx-auto h-px bg-border/60" />
+        </div>
+      </section>
+
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
