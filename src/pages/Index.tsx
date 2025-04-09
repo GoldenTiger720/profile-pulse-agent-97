@@ -667,6 +667,80 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* New Branded Growth Section */}
+      <section className="py-16 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="space-y-8">
+                <h3 className="text-6xl font-bold">Branded Growth</h3>
+                <h4 className="text-3xl font-medium">20% Business growth with his published book</h4>
+                
+                <div className="space-y-4">
+                  <p className="text-lg">
+                    Ariel Halevi runs a 140-person consulting firm. With offices in Israel, the USA & Asia, he had the experience & wisdom but no time to write his book. Our sister company, <span className="font-bold">Author Your Brand</span>, interviewed, positioned, wrote, edited, formatted, & published his 1st book.
+                  </p>
+                  
+                  <p className="text-lg">
+                    10 years of "wanting" transformed into a published book in less than 9 months.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="relative rounded-xl overflow-hidden aspect-video shadow-xl border border-border">
+                <div className="absolute inset-0 bg-black/5 z-10"></div>
+                <video 
+                  className="w-full h-full object-cover"
+                  controls
+                  poster="/lovable-uploads/a6930e95-a726-4208-b410-0a293d6bfe23.png"
+                >
+                  <source src="https://example.com/placeholder-video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 z-20">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="w-20 h-1 bg-findmystage-green mb-2"></div>
+                      <p className="text-white text-xs">AUTHOR YOUR BRAND</p>
+                    </div>
+                    <div className="flex items-center gap-2 text-white text-xs">
+                      <span className="font-medium">2:34</span>
+                      <div className="h-5 flex items-center gap-2">
+                        <button className="hover:text-findmystage-green transition-colors">
+                          <span className="sr-only">Closed Captions</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="14" x="3" y="5" rx="2" ry="2"/><path d="M8 9h8"/><path d="M8 13h6"/><path d="M8 17h4"/></svg>
+                        </button>
+                        <button className="hover:text-findmystage-green transition-colors">
+                          <span className="sr-only">Mute</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                        </button>
+                        <button className="hover:text-findmystage-green transition-colors">
+                          <span className="sr-only">Settings</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                        <button className="hover:text-findmystage-green transition-colors">
+                          <span className="sr-only">Fullscreen</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                  <div className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-1 rounded-md text-sm font-medium">
+                    I FELT LIKE A PERSON THAT WAS <span className="text-findmystage-green font-bold">PREGNANT</span> FOR 10 YEARS
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 mt-16">
+          <Separator className="max-w-6xl mx-auto h-px bg-border/60" />
+        </div>
+      </section>
+
     </div>
   );
 };
