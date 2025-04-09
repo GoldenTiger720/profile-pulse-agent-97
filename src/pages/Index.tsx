@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -328,19 +327,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
-                <img 
-                  src="/lovable-uploads/1dbe0683-8daa-4375-9185-bfaa23aff8c9.png" 
-                  alt="Speaker addressing an audience" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                  <div className="w-40 h-1 bg-findmystage-green mb-2"></div>
-                  <p className="text-white text-sm font-medium">AUTHORITY FUSION</p>
-                </div>
-              </div>
-              
-              <div className="space-y-6 px-4 md:px-8">
+              <div className="space-y-6">
                 <h2 className="text-5xl font-bold">Speakers</h2>
                 <p className="text-3xl font-medium">We find targeted stages for you.</p>
                 
@@ -359,6 +346,18 @@ const Index = () => {
                 <Button asChild size="lg" className="rounded-full mt-4 bg-findmystage-green hover:bg-findmystage-green/90">
                   <Link to="/profile">Find Your Stage <ArrowRight className="ml-2" /></Link>
                 </Button>
+              </div>
+              
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <img 
+                  src="/lovable-uploads/1dbe0683-8daa-4375-9185-bfaa23aff8c9.png" 
+                  alt="Speaker addressing an audience" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <div className="w-40 h-1 bg-findmystage-green mb-2"></div>
+                  <p className="text-white text-sm font-medium">AUTHORITY FUSION</p>
+                </div>
               </div>
             </div>
           </div>
@@ -533,6 +532,41 @@ const Index = () => {
                     AND THE WAY I FEEL <span className="text-findmystage-green">THE MARKET'S</span>
                   </p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 mt-16">
+          <Separator className="max-w-6xl mx-auto h-px bg-border/60" />
+        </div>
+      </section>
+
+      {/* Personal Brand Section */}
+      <section className="py-16 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/204fa049-2a0f-4454-ad36-8e35e8be55b6.png" 
+                  alt="Building blocks of personal brand with Authority Fusion" 
+                  className="w-full h-auto object-cover rounded-lg shadow-xl"
+                />
+              </div>
+              
+              <div className="space-y-6">
+                <h2 className="text-7xl font-bold">Per<span className="text-findmystage-green">$</span>onal Brand</h2>
+                <h3 className="text-4xl font-medium"><span className="font-bold">$200,000</span> increase in <br />revenue</h3>
+                
+                <div className="mt-8 space-y-4">
+                  <p className="text-lg italic">
+                    "Doug helped me publish two books. My first book, Super Hero Single Dad, took second place in Christian writers awards. My second book, ROL (Return on Life) with a foreword by Les Brown, became a Amazon <span className="font-bold">#1 bestseller</span>. Because of these two books, I've placed millions more under management, increased my revenue by $200K, and seen a measurable boost in my credibility."
+                  </p>
+                </div>
+                
+                <Button asChild size="lg" className="rounded-full mt-6 bg-findmystage-green hover:bg-findmystage-green/90">
+                  <Link to="/profile">Build Your Brand <ArrowRight className="ml-2" /></Link>
+                </Button>
               </div>
             </div>
           </div>
