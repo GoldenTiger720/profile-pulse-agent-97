@@ -131,3 +131,20 @@
   }
 }
 
+/* New styles for the speaker cards */
+.speaker-card {
+  @apply relative pl-12 border border-gray-200 rounded-lg shadow-sm bg-white dark:bg-card;
+}
+
+.speaker-avatar {
+  @apply absolute -left-12 w-24 h-24 rounded-full border-4 border-white dark:border-gray-800 shadow-md overflow-hidden;
+}
+
+.speaker-card-container {
+  @apply flex gap-16 overflow-x-auto pb-4 snap-x;
+}
+
+.speaker-card-item {
+  @apply snap-start flex-shrink-0;
+}
+
