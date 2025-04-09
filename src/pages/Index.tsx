@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -126,7 +125,6 @@ const Index = () => {
     }
   ];
 
-  // New case studies data
   const caseStudies = [
     {
       imageSrc: "/lovable-uploads/bb1df633-b350-4bae-b8cc-1d6606d45a5f.png",
@@ -462,7 +460,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* New Success Stories Section */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center mb-12">
@@ -644,7 +641,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Case Studies Carousel */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center mb-12">
@@ -678,6 +674,70 @@ const Index = () => {
                 <CarouselNext className="relative static mx-2 right-0 translate-y-0" />
               </div>
             </Carousel>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <h2 className="text-6xl font-bold leading-tight">Money does <br />not grow on <br />trees</h2>
+                <h3 className="text-3xl font-medium">...But it may feel that way.</h3>
+                
+                <p className="text-xl">
+                  We've helped hundreds of CEO's & Founders create hypnotic personal brands. Give it a shot, you won't regret it.
+                </p>
+                
+                <div className="max-w-md bg-card/30 backdrop-blur-sm p-6 rounded-xl border border-border/50 mt-8">
+                  <form onSubmit={handleSignUp} className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="name-money" className="sr-only">Your Name</Label>
+                      <Input 
+                        id="name-money"
+                        type="text"
+                        placeholder="Your Name" 
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        className="bg-background/70 backdrop-blur-sm"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="email-money" className="sr-only">Email Address</Label>
+                      <Input 
+                        id="email-money"
+                        type="email"
+                        placeholder="john.doe@gmail.com" 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        className="bg-background/70 backdrop-blur-sm"
+                      />
+                    </div>
+                    
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-[#4CAF50] hover:bg-[#45a049] text-white rounded-md flex items-center justify-center gap-2"
+                      disabled={isSubmitting}
+                    >
+                      SIGN UP
+                      <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </form>
+                </div>
+              </div>
+              
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/756cc23f-fdd9-4233-b4bf-0f3adb8459d8.png" 
+                  alt="Money tree with dollar bills growing on it" 
+                  className="w-full h-auto object-contain rounded-lg"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
