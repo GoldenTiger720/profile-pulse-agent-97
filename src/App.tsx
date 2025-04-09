@@ -15,6 +15,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/profile" element={<ProfileCreator />} />
           <Route path="/database" element={<DatabasePage />} />
+          <Route path="/resources" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
