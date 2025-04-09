@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import SpeakerCard from '@/components/SpeakerCard';
 import { Separator } from '@/components/ui/separator';
 import CaseStudyCard from '@/components/CaseStudyCard';
+import VideoPlayer from '@/components/VideoPlayer';
 import {
   Carousel,
   CarouselContent,
@@ -501,6 +502,45 @@ const Index = () => {
         </div>
       </section>
 
+      {/* New Branded Growth Section */}
+      <section className="py-16 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <h2 className="text-7xl font-bold leading-tight">Branded Growth</h2>
+                <h3 className="text-4xl font-medium">20% Business growth with <br />his published book</h3>
+                
+                <p className="text-lg">
+                  Ariel Halevi runs a 140-person consulting firm. With offices in Israel, the USA & Asia, he had the experience & wisdom but no time to write his book. Our sister company, <span className="font-bold">Author Your Brand</span>, interviewed, positioned, wrote, edited, formatted, & published his 1st book. 10 years of "wanting" transformed into a published book in less than 9 months.
+                </p>
+                
+                <Button asChild size="lg" className="rounded-full mt-6 bg-findmystage-green hover:bg-findmystage-green/90">
+                  <Link to="/resources">Grow Your Brand <ArrowRight className="ml-2" /></Link>
+                </Button>
+              </div>
+              
+              <div className="relative rounded-lg overflow-hidden border shadow-lg">
+                <VideoPlayer 
+                  videoSrc="/path/to/video.mp4" 
+                  posterSrc="/lovable-uploads/1a0f556f-49ec-4143-983f-7a569a217048.png"
+                  title="Branded Growth Case Study" 
+                />
+                <div className="absolute top-0 right-0 z-10 bg-black/70 text-white p-3 rounded-bl-lg">
+                  <p className="uppercase text-sm font-medium">
+                    BOOK OR IF YOU DON'T HAVE A BOOK <br />
+                    AND THE WAY I FEEL <span className="text-findmystage-green">THE MARKET'S</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 mt-16">
+          <Separator className="max-w-6xl mx-auto h-px bg-border/60" />
+        </div>
+      </section>
+
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -627,122 +667,4 @@ const Index = () => {
                 </div>
                 
                 <div className="flex gap-6 items-start animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                  <div className="w-28 h-36 bg-muted rounded-lg border flex items-center justify-center">
-                    <Globe size={40} className="text-findmystage-green" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-2">Your Network = Your Net Worth</h3>
-                    <p className="text-muted-foreground">Connect with industry leaders who can help you grow your influence and create new opportunities.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Case Studies</h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
-              See how speakers, authors, and experts have used Authority Fusion to grow their personal brand and business.
-            </p>
-          </div>
-          
-          <div className="max-w-6xl mx-auto">
-            <Carousel autoPlay={true} autoPlayInterval={5000} className="mb-8">
-              <CarouselContent>
-                {Array.from({ length: Math.ceil(caseStudies.length / 3) }).map((_, slideIndex) => (
-                  <CarouselItem key={slideIndex}>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-1">
-                      {caseStudies.slice(slideIndex * 3, slideIndex * 3 + 3).map((study, index) => (
-                        <CaseStudyCard
-                          key={index}
-                          imageSrc={study.imageSrc}
-                          quote={study.quote}
-                          name={study.name}
-                          title={study.title}
-                        />
-                      ))}
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="flex justify-center mt-6">
-                <CarouselPrevious className="relative static mx-2 left-0 translate-y-0" />
-                <CarouselNext className="relative static mx-2 right-0 translate-y-0" />
-              </div>
-            </Carousel>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <h2 className="text-6xl font-bold leading-tight">Money does <br />not grow on <br />trees</h2>
-                <h3 className="text-3xl font-medium">...But it may feel that way.</h3>
-                
-                <p className="text-xl">
-                  We've helped hundreds of CEO's & Founders create hypnotic personal brands. Give it a shot, you won't regret it.
-                </p>
-                
-                <div className="max-w-md bg-card/30 backdrop-blur-sm p-6 rounded-xl border border-border/50 mt-8">
-                  <form onSubmit={handleSignUp} className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name-money" className="sr-only">Your Name</Label>
-                      <Input 
-                        id="name-money"
-                        type="text"
-                        placeholder="Your Name" 
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                        className="bg-background/70 backdrop-blur-sm"
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="email-money" className="sr-only">Email Address</Label>
-                      <Input 
-                        id="email-money"
-                        type="email"
-                        placeholder="john.doe@gmail.com" 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        className="bg-background/70 backdrop-blur-sm"
-                      />
-                    </div>
-                    
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-[#4CAF50] hover:bg-[#45a049] text-white rounded-md flex items-center justify-center gap-2"
-                      disabled={isSubmitting}
-                    >
-                      SIGN UP
-                      <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </form>
-                </div>
-              </div>
-              
-              <div className="relative">
-                <img 
-                  src="/lovable-uploads/756cc23f-fdd9-4233-b4bf-0f3adb8459d8.png" 
-                  alt="Money tree with dollar bills growing on it" 
-                  className="w-full h-auto object-contain rounded-lg"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-};
-
-export default Index;
+                  <div className="w-28 h-36 bg-
