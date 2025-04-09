@@ -162,6 +162,33 @@
   border-radius: 0.5rem;
 }
 
+/* Author resources section styles */
+.author-resources-image {
+  position: relative;
+  transition: transform 0.5s ease;
+}
+
+.author-resources-image:hover {
+  transform: translateY(-10px);
+}
+
+.author-resources-image::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 15px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 80%);
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
+}
+
+.author-resources-image:hover::after {
+  opacity: 0.8;
+}
+
 /* Speaker card specific styles */
 .speakers-display {
   margin-top: 2rem;

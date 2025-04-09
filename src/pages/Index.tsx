@@ -316,18 +316,56 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 relative z-10">
+      <section className="py-20 relative z-10 bg-card/20 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 items-center">
-              <div className="relative image-container-3d">
-                <img 
-                  src="/lovable-uploads/9a8aad2a-1034-43a4-a02d-32e8efb59701.png" 
-                  alt="Conference audience looking at a presenter" 
-                  className="w-full rounded-lg shadow-xl rotate-3d"
-                />
+              <div className="space-y-6">
+                <h2 className="text-7xl font-bold">Author Resources</h2>
+                <h3 className="text-4xl font-medium">Live trainings from <span className="font-bold">industry experts.</span></h3>
+                
+                <div className="mt-8">
+                  <h4 className="text-2xl font-bold mb-4">Become an Author of Impact.</h4>
+                  <p className="text-xl">
+                    We provide authors with dozens of resources, training, & assets to make your book 
+                    a platform of influence.
+                  </p>
+                </div>
+                
+                <div className="pt-6">
+                  <h4 className="text-2xl font-bold mb-4">Ghostwriting. Publishing. Marketing.</h4>
+                </div>
+                
+                <div className="pt-4 text-xl">
+                  <p>DIY or 100% Done for you.</p>
+                </div>
+                
+                <div className="pt-6">
+                  <Button asChild size="lg" className="rounded-full px-8 bg-findmystage-green hover:bg-findmystage-green/90">
+                    <Link to="/profile">Access Author Resources <ArrowRight className="ml-2" /></Link>
+                  </Button>
+                </div>
               </div>
               
+              <div className="relative author-resources-image">
+                <img 
+                  src="/lovable-uploads/0c2ae4b9-8993-49b6-9b59-04f0ba7432f9.png" 
+                  alt="Author resources with laptop, books, and Authority Fusion cup" 
+                  className="w-full object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 mt-16">
+          <Separator className="max-w-6xl mx-auto h-px bg-border/60" />
+        </div>
+      </section>
+
+      <section className="py-16 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="space-y-6">
                 <h2 className="text-7xl font-bold">Community</h2>
                 <h3 className="text-3xl font-medium">Network with <span className="font-bold">industry experts.</span></h3>
@@ -514,13 +552,6 @@ const Index = () => {
 
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Case Studies</h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
-              See how speakers, authors, and experts have used FindMyStage to grow their personal brand and business.
-            </p>
-          </div>
-          
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[1, 2, 3].map((index) => (
