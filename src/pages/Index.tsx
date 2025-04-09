@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import SpeakerCard from '@/components/SpeakerCard';
+import { Separator } from '@/components/ui/separator';
 
 const Index = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -315,6 +316,62 @@ const Index = () => {
         </div>
       </section>
 
+      <section className="py-20 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 items-center">
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/9a8aad2a-1034-43a4-a02d-32e8efb59701.png" 
+                  alt="Conference audience looking at a presenter" 
+                  className="w-full rounded-lg shadow-xl transform rotate-[-2deg]"
+                />
+              </div>
+              
+              <div className="space-y-6">
+                <h2 className="text-7xl font-bold">Community</h2>
+                <h3 className="text-3xl font-medium">Network with <span className="font-bold">industry experts.</span></h3>
+                
+                <p className="text-xl">
+                  Gain access to our <span className="font-bold">community of excellence</span> where you can network and collaborate with over thousands of successful CEO's and Founders who understand and live the core principles of servant leadership.
+                </p>
+                
+                <div className="pt-6">
+                  <h4 className="text-2xl font-bold mb-4">YOUR EVENTS INCLUDE:</h4>
+                  <ul className="space-y-4 text-lg">
+                    <li className="flex items-start">
+                      <span className="text-findmystage-green mr-2">•</span>
+                      Monthly <span className="font-bold">CEO roundtable</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-findmystage-green mr-2">•</span>
+                      Weekly "Ask anything," open forum
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-findmystage-green mr-2">•</span>
+                      Monthly media "hot seat" session
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-findmystage-green mr-2">•</span>
+                      <span className="font-bold">2 live events</span> each year (by invitation only)
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="pt-4">
+                  <Button asChild size="lg" className="rounded-full px-8 bg-findmystage-green hover:bg-findmystage-green/90">
+                    <Link to="/database">Join Our Community <ArrowRight className="ml-2" /></Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 mt-16">
+          <Separator className="max-w-6xl mx-auto h-px bg-border/60" />
+        </div>
+      </section>
+
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -399,7 +456,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-card/30 backdrop-blur-sm relative z-10">
+      <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">DOES AUTHORITY FUSION WORK?</h2>
