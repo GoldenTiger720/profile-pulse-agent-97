@@ -320,11 +320,11 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 items-center">
-              <div className="relative">
+              <div className="relative image-container-3d">
                 <img 
                   src="/lovable-uploads/9a8aad2a-1034-43a4-a02d-32e8efb59701.png" 
                   alt="Conference audience looking at a presenter" 
-                  className="w-full rounded-lg shadow-xl transform rotate-[-2deg]"
+                  className="w-full rounded-lg shadow-xl rotate-3d"
                 />
               </div>
               
@@ -545,7 +545,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-card/30 backdrop-blur-sm relative z-10">
+      <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">

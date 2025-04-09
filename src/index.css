@@ -141,6 +141,27 @@
   }
 }
 
+/* 3D rotation animation for community image */
+@keyframes rotate-3d {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg);
+  }
+}
+
+.rotate-3d {
+  animation: rotate-3d 15s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.image-container-3d {
+  perspective: 1000px;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
 /* Speaker card specific styles */
 .speakers-display {
   margin-top: 2rem;
