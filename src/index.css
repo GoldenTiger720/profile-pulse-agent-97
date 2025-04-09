@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -132,10 +131,15 @@
 }
 
 /* Speaker card specific styles */
+.speakers-display {
+  margin-top: 2rem;
+}
+
 .speakers-row {
   display: flex;
+  flex-direction: column;
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .speaker-card-container {
