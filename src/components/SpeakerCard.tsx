@@ -1,5 +1,7 @@
+
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface SpeakerCardProps {
   name: string;
@@ -18,18 +20,15 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({
 }) => {
   return (
     <div className="speaker-card-container">
-      <div className="flex items-start gap-4 mb-4">
-        <div className="avatar-container">
-          <img
-            src={avatarSrc}
-            alt={name}
-            className="h-16 w-16 rounded-full object-cover border-2 border-white/50 shadow-lg"
-          />
-        </div>
-
-        <Card className="speaker-card w-full overflow-hidden shadow-lg border">
-          <CardContent className="p-4">
-            <div className="space-y-2">
+      <Card className="speaker-card w-full overflow-hidden shadow-lg border">
+        <CardContent className="p-4">
+          <div className="flex items-start gap-4">
+            <Avatar className="h-16 w-16 rounded-full border-2 border-white/50 shadow-lg flex-shrink-0">
+              <AvatarImage src={avatarSrc} alt={name} className="object-cover" />
+              <AvatarFallback>{name.charAt(0)}</AvatarFallback>
+            </Avatar>
+            
+            <div className="space-y-2 w-full">
               <div className="flex justify-between items-start">
                 <div>
                   <p className="font-medium">Name: {name}</p>
@@ -45,9 +44,9 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({
                 <span className="font-medium">Requirement:</span> {requirement}
               </p>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };
