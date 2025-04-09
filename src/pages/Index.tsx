@@ -1,12 +1,19 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Users, BookOpen, Globe, CheckCircle, BarChart3, Mic } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useToast } from '@/hooks/use-toast';
 
 const Index = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -73,6 +80,22 @@ const Index = () => {
     };
   }, []);
 
+  const handleSignUp = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      toast({
+        title: "Success!",
+        description: "Thank you for signing up. We'll be in touch soon!",
+      });
+      setName('');
+      setEmail('');
+    }, 1500);
+  };
+
   return (
     <div className="relative">
       {/* Starry background */}
@@ -94,6 +117,47 @@ const Index = () => {
                   FindMyStage helps speakers, authors, podcasters, and experts get booked on stages 
                   that match their expertise, grow their audience, and increase their revenue.
                 </p>
+                
+                {/* Sign Up Form */}
+                <div className="max-w-md bg-card/30 backdrop-blur-sm p-6 rounded-xl border border-border/50 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                  <form onSubmit={handleSignUp} className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="sr-only">Your Name</Label>
+                      <Input 
+                        id="name"
+                        type="text"
+                        placeholder="Your Name" 
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        className="bg-background/70 backdrop-blur-sm"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="sr-only">Email Address</Label>
+                      <Input 
+                        id="email"
+                        type="email"
+                        placeholder="john.doe@gmail.com" 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        className="bg-background/70 backdrop-blur-sm"
+                      />
+                    </div>
+                    
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-findmystage-green hover:bg-findmystage-green/90 text-white rounded-md flex items-center justify-center gap-2"
+                      disabled={isSubmitting}
+                    >
+                      SIGN UP
+                      <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </form>
+                </div>
+                
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button asChild size="lg" className="rounded-full px-8 animate-pulse-slow">
                     <Link to="/profile">Get Started</Link>
