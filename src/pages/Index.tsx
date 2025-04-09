@@ -8,6 +8,14 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import SpeakerCard from '@/components/SpeakerCard';
 import { Separator } from '@/components/ui/separator';
+import CaseStudyCard from '@/components/CaseStudyCard';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const Index = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -114,6 +122,46 @@ const Index = () => {
       requirement: "We are looking for Founders, CEOs, and Presidents to share their compelling brand stories.",
       avatarSrc: "https://images.unsplash.com/photo-1487887235947-a955ef187fcc?ixlib=rb-4.0.3",
       logoSrc: "https://placehold.co/80x30/333333/FFFFFF/png?text=SOLUTION"
+    }
+  ];
+
+  // New case studies data
+  const caseStudies = [
+    {
+      imageSrc: "/lovable-uploads/bb1df633-b350-4bae-b8cc-1d6606d45a5f.png",
+      quote: "Working with Authority Fusion was a game-changer for my career. Doug Crowe and his team didn't just help me publish a book; they helped me articulate my vision for integrating neuroscience in athlete development in a way that was both accessible and engaging.",
+      name: "Ryan Schatchner",
+      title: "Neuroscience-Based Athlete Development"
+    },
+    {
+      imageSrc: "/lovable-uploads/bb1df633-b350-4bae-b8cc-1d6606d45a5f.png",
+      quote: "Writing 'Cancer's Gifts: A Loving Journey Toward the Final Chapter' was a deeply personal endeavor. Authority Fusion treated my story with the utmost respect and sensitivity, guiding me through the publishing process with empathy and expertise.",
+      name: "Les Whitney",
+      title: "Vistage International, Group Chair"
+    },
+    {
+      imageSrc: "/lovable-uploads/bb1df633-b350-4bae-b8cc-1d6606d45a5f.png",
+      quote: "As a CEO and investor, I understand the value of a great partnership. Authority Fusion exceeded my expectations in every way. Their strategic approach to publishing and marketing my insights has not only boosted my professional profile but also allowed me to connect with readers in a meaningful way.",
+      name: "Kent Emmons",
+      title: "Founding Investor / CEO, Crave News"
+    },
+    {
+      imageSrc: "/lovable-uploads/bb1df633-b350-4bae-b8cc-1d6606d45a5f.png",
+      quote: "Authority Fusion gave me the confidence to share my expertise with the world. The process was streamlined and supportive from start to finish, and the results have been transformative for my business.",
+      name: "Sarah Johnson",
+      title: "Leadership Consultant"
+    },
+    {
+      imageSrc: "/lovable-uploads/bb1df633-b350-4bae-b8cc-1d6606d45a5f.png",
+      quote: "The team at Authority Fusion understood exactly what I wanted to achieve with my book. Their guidance helped me create a powerful message that resonates with my audience and establishes my authority in my field.",
+      name: "Michael Roberts",
+      title: "Financial Wellness Expert"
+    },
+    {
+      imageSrc: "/lovable-uploads/bb1df633-b350-4bae-b8cc-1d6606d45a5f.png",
+      quote: "Publishing my book with Authority Fusion opened doors I never thought possible. Within months, I was being invited to speak at conferences and appearing on podcasts. The ROI has been incredible.",
+      name: "Jennifer Adams",
+      title: "Health & Wellness Coach"
     }
   ];
 
@@ -630,195 +678,4 @@ const Index = () => {
 
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6 animate-fade-in">
-                <h2 className="text-3xl font-bold">Money does not grow on trees</h2>
-                <h3 className="text-xl italic text-muted-foreground">...But it just might now.</h3>
-                <p className="text-lg">
-                  Maximize your speaking revenue by connecting with high-paying opportunities that value your expertise.
-                </p>
-                <Button asChild size="lg" className="rounded-full px-8 mt-4">
-                  <Link to="/profile">Get Started Today</Link>
-                </Button>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="w-64 h-64 rounded-full bg-muted flex items-center justify-center animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                  <div className="w-48 h-48 rounded-full bg-findmystage-green/20 flex items-center justify-center">
-                    <Mic size={60} className="text-findmystage-green" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in">
-            <h2 className="text-3xl font-bold">Ready to Find Your Stage?</h2>
-            <p className="text-lg text-muted-foreground">
-              Let our AI agent analyze your content and match you with the perfect speaking opportunities.
-            </p>
-            <Button asChild size="lg" className="rounded-full px-8 animate-pulse-slow">
-              <Link to="/profile">Get Started</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* New Branded Growth Section */}
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-8">
-                <h3 className="text-6xl font-bold">Branded Growth</h3>
-                <h4 className="text-3xl font-medium">20% Business growth with his published book</h4>
-                
-                <div className="space-y-4">
-                  <p className="text-lg">
-                    Ariel Halevi runs a 140-person consulting firm. With offices in Israel, the USA & Asia, he had the experience & wisdom but no time to write his book. Our sister company, <span className="font-bold">Author Your Brand</span>, interviewed, positioned, wrote, edited, formatted, & published his 1st book.
-                  </p>
-                  
-                  <p className="text-lg">
-                    10 years of "wanting" transformed into a published book in less than 9 months.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="relative rounded-xl overflow-hidden aspect-video shadow-xl border border-border">
-                <div className="absolute inset-0 bg-black/5 z-10"></div>
-                <video 
-                  className="w-full h-full object-cover"
-                  controls
-                  poster="/lovable-uploads/a6930e95-a726-4208-b410-0a293d6bfe23.png"
-                >
-                  <source src="https://example.com/placeholder-video.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 z-20">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="w-20 h-1 bg-findmystage-green mb-2"></div>
-                      <p className="text-white text-xs">AUTHOR YOUR BRAND</p>
-                    </div>
-                    <div className="flex items-center gap-2 text-white text-xs">
-                      <span className="font-medium">2:34</span>
-                      <div className="h-5 flex items-center gap-2">
-                        <button className="hover:text-findmystage-green transition-colors">
-                          <span className="sr-only">Closed Captions</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="14" x="3" y="5" rx="2" ry="2"/><path d="M8 9h8"/><path d="M8 13h6"/><path d="M8 17h4"/></svg>
-                        </button>
-                        <button className="hover:text-findmystage-green transition-colors">
-                          <span className="sr-only">Mute</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-                        </button>
-                        <button className="hover:text-findmystage-green transition-colors">
-                          <span className="sr-only">Settings</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l-.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
-                        </button>
-                        <button className="hover:text-findmystage-green transition-colors">
-                          <span className="sr-only">Fullscreen</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                  <div className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-4 py-1 rounded-md text-sm font-medium">
-                    I FELT LIKE A PERSON THAT WAS <span className="text-findmystage-green font-bold">PREGNANT</span> FOR 10 YEARS
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="container mx-auto px-4 mt-16">
-          <Separator className="max-w-6xl mx-auto h-px bg-border/60" />
-        </div>
-      </section>
-
-      {/* New Personal Brand Section */}
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="relative">
-                <img 
-                  src="/lovable-uploads/a1284e51-8125-407c-a8be-392bcc3a3013.png" 
-                  alt="Wooden blocks representing growth of authority and brand" 
-                  className="w-full h-auto rounded-lg shadow-xl"
-                />
-              </div>
-              
-              <div className="space-y-8">
-                <h3 className="text-6xl font-bold">Per<span className="text-findmystage-green">$</span>onal Brand</h3>
-                <h4 className="text-3xl font-medium">$200,0000 increase in revenue</h4>
-                
-                <div className="space-y-4">
-                  <p className="text-lg italic">
-                    "Doug helped me publish two books. My first book, Super Hero Single Dad, took second place in Christian writers awards. My second book, ROL (Return on Life) with a foreword by Les Brown, became a Amazon <span className="font-bold">#1 bestseller</span>. Because of these two books, I've placed millions more under management, increased my revenue by $200K, and seen a measurable boost in my credibility."
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="container mx-auto px-4 mt-16">
-          <Separator className="max-w-6xl mx-auto h-px bg-border/60" />
-        </div>
-      </section>
-
-      {/* New Network = Net Worth Section */}
-      <section className="py-20 bg-background relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto text-center space-y-6">
-            <h2 className="text-6xl font-bold">Your Network = Your Net Worth</h2>
-            <p className="text-xl max-w-3xl mx-auto">
-              Our members are passionate about building relationships & creating impact. Join Today. It's free after all...
-            </p>
-            
-            <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
-              <div className="col-span-1">
-                <Input 
-                  type="text" 
-                  placeholder="Name" 
-                  className="h-12 text-base"
-                />
-              </div>
-              <div className="col-span-1">
-                <Input 
-                  type="email" 
-                  placeholder="Email" 
-                  className="h-12 text-base"
-                />
-              </div>
-              <div className="col-span-1">
-                <Button className="w-full h-12 bg-findmystage-green hover:bg-findmystage-green/90 text-white font-medium">
-                  Sign Up
-                </Button>
-              </div>
-            </div>
-            
-            <div className="pt-10">
-              <img 
-                src="/lovable-uploads/cc70c4a8-26ca-4d59-80a9-6f7a6b5b9251.png" 
-                alt="Network equals net worth concept illustration" 
-                className="w-full max-w-4xl mx-auto rounded-xl shadow-xl"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="container mx-auto px-4 mt-16">
-          <Separator className="max-w-6xl mx-auto h-px bg-border/60" />
-        </div>
-      </section>
-
-    </div>
-  );
-};
-
-export default Index;
+          <div className
