@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -164,7 +165,7 @@
 /* Speaker card specific styles */
 .speakers-display {
   margin-top: 2rem;
-  height: 500px;
+  height: 600px; /* Increased height to accommodate cards without overlap */
   position: relative;
   overflow: hidden;
 }
@@ -172,21 +173,22 @@
 .speakers-row {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 4rem; /* Increased gap between cards to prevent overlap */
   position: absolute;
   width: 100%;
-  animation: continuous-float-up 25s linear infinite;
+  animation: continuous-float-up 30s linear infinite; /* Slowed down animation */
 }
 
 /* Clone the speakers-row for seamless infinite animation */
 .speakers-row:nth-child(2) {
   top: 100%;
-  animation-delay: -12.5s;
+  animation-delay: -15s; /* Half of the animation duration */
 }
 
 .speaker-card-container {
   width: 100%;
-  padding: 0.5rem;
+  padding: 1rem; /* Increased padding for more space between cards */
+  margin-bottom: 1rem; /* Added margin between card containers */
 }
 
 .speaker-card {

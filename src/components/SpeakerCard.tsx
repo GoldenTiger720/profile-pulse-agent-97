@@ -20,7 +20,7 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({
 }) => {
   return (
     <div className="speaker-card-container">
-      <Card className="speaker-card w-full overflow-hidden shadow-lg border">
+      <Card className="speaker-card w-full overflow-hidden shadow-lg border border-border/50">
         <CardContent className="p-4">
           <div className="flex items-start gap-4">
             <Avatar className="h-16 w-16 rounded-full border-2 border-white/50 shadow-lg flex-shrink-0">
