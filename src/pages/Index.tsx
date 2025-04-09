@@ -23,6 +23,9 @@ const Index = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [networkName, setNetworkName] = useState('');
+  const [networkEmail, setNetworkEmail] = useState('');
+  const [isNetworkSubmitting, setIsNetworkSubmitting] = useState(false);
   const { toast } = useToast();
   
   useEffect(() => {
@@ -96,6 +99,21 @@ const Index = () => {
       });
       setName('');
       setEmail('');
+    }, 1500);
+  };
+
+  const handleNetworkSignUp = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsNetworkSubmitting(true);
+    
+    setTimeout(() => {
+      setIsNetworkSubmitting(false);
+      toast({
+        title: "Welcome to our network!",
+        description: "Thank you for signing up. We'll keep you updated on our community events.",
+      });
+      setNetworkName('');
+      setNetworkEmail('');
     }, 1500);
   };
 
@@ -569,6 +587,55 @@ const Index = () => {
                 </Button>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 mt-16">
+          <Separator className="max-w-6xl mx-auto h-px bg-border/60" />
+        </div>
+      </section>
+
+      {/* Your Network = Your Net Worth Section */}
+      <section className="py-16 bg-muted/30 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">Your Network = Your Net Worth</h2>
+            <p className="text-xl max-w-3xl mx-auto mb-12">
+              Our members are passionate about building relationships & creating impact. Join Today. It's free after all...
+            </p>
+            
+            <form onSubmit={handleNetworkSignUp} className="max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
+                <div className="md:col-span-3">
+                  <Input
+                    type="text"
+                    placeholder="Name"
+                    value={networkName}
+                    onChange={(e) => setNetworkName(e.target.value)}
+                    required
+                    className="h-14 bg-background border-input"
+                  />
+                </div>
+                <div className="md:col-span-3">
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    value={networkEmail}
+                    onChange={(e) => setNetworkEmail(e.target.value)}
+                    required
+                    className="h-14 bg-background border-input"
+                  />
+                </div>
+                <div className="md:col-span-1">
+                  <Button 
+                    type="submit" 
+                    className="w-full h-14 bg-findmystage-green hover:bg-findmystage-green/90 text-white"
+                    disabled={isNetworkSubmitting}
+                  >
+                    Sign Up
+                  </Button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
         <div className="container mx-auto px-4 mt-16">
