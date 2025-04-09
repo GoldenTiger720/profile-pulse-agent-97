@@ -717,7 +717,7 @@ const Index = () => {
                         </button>
                         <button className="hover:text-findmystage-green transition-colors">
                           <span className="sr-only">Settings</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l-.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
                         </button>
                         <button className="hover:text-findmystage-green transition-colors">
                           <span className="sr-only">Fullscreen</span>
@@ -764,6 +764,51 @@ const Index = () => {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 mt-16">
+          <Separator className="max-w-6xl mx-auto h-px bg-border/60" />
+        </div>
+      </section>
+
+      {/* New Network = Net Worth Section */}
+      <section className="py-20 bg-background relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto text-center space-y-6">
+            <h2 className="text-6xl font-bold">Your Network = Your Net Worth</h2>
+            <p className="text-xl max-w-3xl mx-auto">
+              Our members are passionate about building relationships & creating impact. Join Today. It's free after all...
+            </p>
+            
+            <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
+              <div className="col-span-1">
+                <Input 
+                  type="text" 
+                  placeholder="Name" 
+                  className="h-12 text-base"
+                />
+              </div>
+              <div className="col-span-1">
+                <Input 
+                  type="email" 
+                  placeholder="Email" 
+                  className="h-12 text-base"
+                />
+              </div>
+              <div className="col-span-1">
+                <Button className="w-full h-12 bg-findmystage-green hover:bg-findmystage-green/90 text-white font-medium">
+                  Sign Up
+                </Button>
+              </div>
+            </div>
+            
+            <div className="pt-10">
+              <img 
+                src="/lovable-uploads/cc70c4a8-26ca-4d59-80a9-6f7a6b5b9251.png" 
+                alt="Network equals net worth concept illustration" 
+                className="w-full max-w-4xl mx-auto rounded-xl shadow-xl"
+              />
             </div>
           </div>
         </div>
