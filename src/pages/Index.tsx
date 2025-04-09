@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -502,7 +503,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* New Branded Growth Section */}
+      {/* Branded Growth Section */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -667,4 +668,21 @@ const Index = () => {
                 </div>
                 
                 <div className="flex gap-6 items-start animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                  <div className="w-28 h-36 bg-
+                  <div className="w-28 h-36 bg-muted rounded-lg border flex items-center justify-center">
+                    <Mic size={40} className="text-findmystage-orange" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold mb-2">Media Presence</h3>
+                    <p className="text-muted-foreground">Establish yourself as a go-to expert with regular media appearances and features in industry publications.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Index;
