@@ -165,7 +165,7 @@
 /* Speaker card specific styles */
 .speakers-display {
   margin-top: 2rem;
-  height: 600px; /* Increased height to accommodate cards without overlap */
+  height: 650px; /* Further increased height to accommodate cards */
   position: relative;
   overflow: hidden;
 }
@@ -173,22 +173,22 @@
 .speakers-row {
   display: flex;
   flex-direction: column;
-  gap: 4rem; /* Increased gap between cards to prevent overlap */
+  gap: 5rem; /* Further increased gap between cards to prevent overlap */
   position: absolute;
   width: 100%;
-  animation: continuous-float-up 30s linear infinite; /* Slowed down animation */
+  animation: continuous-float-up 35s linear infinite; /* Slowed down animation even more */
 }
 
 /* Clone the speakers-row for seamless infinite animation */
 .speakers-row:nth-child(2) {
   top: 100%;
-  animation-delay: -15s; /* Half of the animation duration */
+  animation-delay: -17.5s; /* Half of the animation duration */
 }
 
 .speaker-card-container {
   width: 100%;
   padding: 1rem; /* Increased padding for more space between cards */
-  margin-bottom: 1rem; /* Added margin between card containers */
+  margin-bottom: 1.5rem; /* Increased margin between card containers */
 }
 
 .speaker-card {

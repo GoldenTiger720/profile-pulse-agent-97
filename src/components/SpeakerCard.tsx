@@ -2,6 +2,7 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 
 interface SpeakerCardProps {
   name: string;
@@ -9,6 +10,7 @@ interface SpeakerCardProps {
   mediaOutlet: string;
   requirement: string;
   avatarSrc: string;
+  index?: number; // Add index prop to create visual variety
 }
 
 const SpeakerCard: React.FC<SpeakerCardProps> = ({
@@ -17,10 +19,20 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({
   mediaOutlet,
   requirement,
   avatarSrc,
+  index = 0,
 }) => {
+  // Use the index to create subtle visual differences between cards
+  const cardVariants = [
+    "border-border/50", 
+    "border-findmystage-green/30", 
+    "border-findmystage-purple/30"
+  ];
+  
+  const borderClass = cardVariants[index % cardVariants.length];
+  
   return (
     <div className="speaker-card-container">
-      <Card className="speaker-card w-full overflow-hidden shadow-lg border border-border/50">
+      <Card className={`speaker-card w-full overflow-hidden shadow-lg border ${borderClass}`}>
         <CardContent className="p-4">
           <div className="flex items-start gap-4">
             <Avatar className="h-16 w-16 rounded-full border-2 border-white/50 shadow-lg flex-shrink-0">
@@ -31,7 +43,14 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({
             <div className="space-y-2 w-full">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="font-medium">Name: {name}</p>
+                  <div className="flex items-center gap-2">
+                    <p className="font-medium">{name}</p>
+                    {index > 0 && (
+                      <Badge variant="outline" className="text-xs">
+                        {index % 3 === 1 ? "Featured" : "New"}
+                      </Badge>
+                    )}
+                  </div>
                   <p className="text-sm text-muted-foreground">
                     Category: {category}
                   </p>
