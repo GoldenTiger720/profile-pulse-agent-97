@@ -6,7 +6,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import SpeakerCard from '@/components/SpeakerCard';
 
 const Index = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -88,42 +87,6 @@ const Index = () => {
       setEmail('');
     }, 1500);
   };
-
-  // Sample speaker data
-  const speakers = [
-    {
-      name: "Lisa Street Rogers",
-      category: "Education",
-      mediaOutlet: "Harnham Inc.",
-      requirement: "Answer the question, \"What trends, if any, are solving for ways to overcome dyslexia?\"",
-      avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
-      logoUrl: "https://placehold.co/80x30/f77/FFFFFF/png?text=harnham"
-    },
-    {
-      name: "David Parker",
-      category: "Technology",
-      mediaOutlet: "TechCrunch",
-      requirement: "Looking for experts to comment on the latest AI developments in healthcare.",
-      avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
-      logoUrl: "https://placehold.co/80x30/3c3/FFFFFF/png?text=TechCrunch"
-    },
-    {
-      name: "Sarah Johnson",
-      category: "Business",
-      mediaOutlet: "Forbes",
-      requirement: "Seeking insights on sustainable business practices for our upcoming special issue.",
-      avatarUrl: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
-      logoUrl: "https://placehold.co/80x30/333/FFFFFF/png?text=Forbes"
-    },
-    {
-      name: "Michael Chang",
-      category: "Health",
-      mediaOutlet: "WebMD",
-      requirement: "Looking for mental health professionals to discuss work-life balance post-pandemic.",
-      avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80",
-      logoUrl: "https://placehold.co/80x30/36a/FFFFFF/png?text=WebMD"
-    }
-  ];
 
   return (
     <div className="relative">
@@ -212,24 +175,6 @@ const Index = () => {
               FindMyStage helps you build authority in your niche by connecting you with the right speaking opportunities, 
               media outlets, and communities to showcase your expertise.
             </p>
-          </div>
-          
-          {/* New Speaker Cards Section in single row */}
-          <div className="max-w-6xl mx-auto mt-12">
-            <h3 className="text-2xl font-bold mb-6">Featured Speakers</h3>
-            <div className="speaker-card-container">
-              {speakers.map((speaker, index) => (
-                <SpeakerCard
-                  key={index}
-                  name={speaker.name}
-                  category={speaker.category}
-                  mediaOutlet={speaker.mediaOutlet}
-                  requirement={speaker.requirement}
-                  avatarUrl={speaker.avatarUrl}
-                  logoUrl={speaker.logoUrl}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </section>
