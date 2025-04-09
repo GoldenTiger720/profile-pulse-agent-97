@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MicrophoneStage, Users, BookOpen, Globe, CheckCircle, BarChart3 } from 'lucide-react';
+import { ArrowRight, Users, BookOpen, Globe, CheckCircle, BarChart3, Mic } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const Index = () => {
@@ -328,7 +328,7 @@ const Index = () => {
               <div className="flex items-center justify-center">
                 <div className="w-64 h-64 rounded-full bg-muted flex items-center justify-center animate-fade-in" style={{ animationDelay: '0.3s' }}>
                   <div className="w-48 h-48 rounded-full bg-findmystage-green/20 flex items-center justify-center">
-                    <MicrophoneStage size={60} className="text-findmystage-green" />
+                    <Mic size={60} className="text-findmystage-green" />
                   </div>
                 </div>
               </div>
