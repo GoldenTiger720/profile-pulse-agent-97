@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -130,7 +131,7 @@
   }
 }
 
-/* New continuous upward animation for speaker cards */
+/* Continuous upward animation for speaker cards */
 @keyframes continuous-float-up {
   0% {
     transform: translateY(0);
@@ -164,7 +165,7 @@
 /* Speaker card specific styles */
 .speakers-display {
   margin-top: 2rem;
-  height: 450px; /* Reduced height to match content */
+  height: 450px; /* Fixed height container */
   position: relative;
   overflow: hidden;
 }
@@ -172,10 +173,9 @@
 .speakers-row {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Reduced gap between cards */
   position: absolute;
   width: 100%;
-  animation: continuous-float-up 25s linear infinite;
+  animation: continuous-float-up 30s linear infinite;
 }
 
 /* Clone the speakers-row for seamless infinite animation */
@@ -185,8 +185,7 @@
 
 .speaker-card-container {
   width: 100%;
-  padding: 0.25rem; /* Minimal padding */
-  margin-bottom: 0.25rem; /* Minimal margin */
+  margin-bottom: 0.5rem; /* Small margin between cards */
 }
 
 .speaker-card {
