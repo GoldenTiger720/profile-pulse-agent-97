@@ -8,6 +8,7 @@ import { format } from 'date-fns';
 import { CalendarIcon, ChevronDown, Phone, User } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
+import InputMask from 'react-input-mask';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -19,6 +20,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  FormDescription,
 } from '@/components/ui/form';
 import {
   Select,
@@ -37,7 +39,7 @@ import { cn } from '@/lib/utils';
 import { countries } from '@/lib/countries';
 import { useAuth } from '@/contexts/AuthContext';
 
-const phoneRegex = /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
+const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: 'First name must be at least 2 characters.' }),
@@ -269,17 +271,25 @@ const SignUp: React.FC = () => {
                   name="phoneNumber"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Phone Number</FormLabel>
+                      <FormLabel className="flex">
+                        Phone Number <span className="text-red-500 ml-1">*</span>
+                      </FormLabel>
                       <FormControl>
                         <div className="relative">
-                          <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                          <Input 
-                            placeholder="+1 (555) 123-4567" 
-                            className="pl-10" 
-                            {...field} 
+                          <InputMask
+                            mask="(999) 999-9999"
+                            maskChar=" "
+                            value={field.value}
+                            onChange={field.onChange}
+                            onBlur={field.onBlur}
+                            placeholder="(000) 000-0000"
+                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                           />
                         </div>
                       </FormControl>
+                      <FormDescription className="text-sm text-muted-foreground">
+                        Please enter a valid phone number.
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -290,7 +300,9 @@ const SignUp: React.FC = () => {
                   name="birthday"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
-                      <FormLabel>Birthday</FormLabel>
+                      <FormLabel className="flex">
+                        Birthday <span className="text-red-500 ml-1">*</span>
+                      </FormLabel>
                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
@@ -302,9 +314,9 @@ const SignUp: React.FC = () => {
                               )}
                             >
                               {field.value ? (
-                                format(field.value, "PPP")
+                                format(field.value, "MM-dd-yyyy")
                               ) : (
-                                <span>Pick a date</span>
+                                <span>MM-DD-YYYY</span>
                               )}
                               <CalendarIcon className="h-4 w-4 opacity-50" />
                             </Button>
@@ -323,6 +335,9 @@ const SignUp: React.FC = () => {
                           />
                         </PopoverContent>
                       </Popover>
+                      <FormDescription className="text-sm text-muted-foreground">
+                        Date
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
