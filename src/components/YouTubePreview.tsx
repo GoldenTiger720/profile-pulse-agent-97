@@ -13,11 +13,13 @@ interface YouTubePreviewProps {
 const YouTubePreview: React.FC<YouTubePreviewProps> = ({ url, onChange }) => {
   const [videoId, setVideoId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [showEmbed, setShowEmbed] = useState(false);
 
   useEffect(() => {
     if (!url) {
       setVideoId(null);
       setError(null);
+      setShowEmbed(false);
       return;
     }
 
@@ -49,6 +51,10 @@ const YouTubePreview: React.FC<YouTubePreviewProps> = ({ url, onChange }) => {
     }
   }, [url]);
 
+  const handleThumbnailClick = () => {
+    setShowEmbed(true);
+  };
+
   return (
     <div className="space-y-4">
       <div className="flex items-center space-x-2">
@@ -68,7 +74,26 @@ const YouTubePreview: React.FC<YouTubePreviewProps> = ({ url, onChange }) => {
         </Alert>
       )}
 
-      {videoId && (
+      {videoId && !showEmbed && (
+        <Card className="overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" onClick={handleThumbnailClick}>
+          <CardContent className="p-0">
+            <div className="aspect-video w-full relative">
+              <img 
+                src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`} 
+                alt="YouTube Thumbnail"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center opacity-80">
+                  <div className="w-0 h-0 border-y-8 border-y-transparent border-l-12 border-l-white ml-1"></div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {videoId && showEmbed && (
         <Card className="overflow-hidden">
           <CardContent className="p-0">
             <div className="aspect-video w-full">
