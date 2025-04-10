@@ -40,6 +40,7 @@ import { countries } from '@/lib/countries';
 import { useAuth } from '@/contexts/AuthContext';
 
 const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
+const dateRegex = /^(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])-\d{4}$/;
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: 'First name must be at least 2 characters.' }),
@@ -60,6 +61,7 @@ type FormValues = z.infer<typeof formSchema>;
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const { signup } = useAuth();
+  const [birthdayInputValue, setBirthdayInputValue] = React.useState("");
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -103,6 +105,28 @@ const SignUp: React.FC = () => {
       // Handle errors
       toast.error('Failed to create account. Please try again.');
       console.error('Signup error:', error);
+    }
+  };
+
+  // Handle direct input for birthday field
+  const handleBirthdayInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    setBirthdayInputValue(inputValue);
+    
+    // Only update the form value if the input matches MM-DD-YYYY format
+    if (dateRegex.test(inputValue)) {
+      const [month, day, year] = inputValue.split('-').map(Number);
+      // Month is 0-based in JavaScript Date
+      const date = new Date(year, month - 1, day);
+      form.setValue('birthday', date, { shouldValidate: true });
+    }
+  };
+
+  // Update the input field when a date is selected from the calendar
+  const handleCalendarSelect = (date: Date | undefined) => {
+    if (date) {
+      form.setValue('birthday', date, { shouldValidate: true });
+      setBirthdayInputValue(format(date, "MM-dd-yyyy"));
     }
   };
 
@@ -303,40 +327,42 @@ const SignUp: React.FC = () => {
                       <FormLabel className="flex">
                         Birthday <span className="text-red-500 ml-1">*</span>
                       </FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
+                      <div className="flex">
+                        <Input
+                          placeholder="MM-DD-YYYY"
+                          value={birthdayInputValue}
+                          onChange={handleBirthdayInput}
+                          className="flex-1 rounded-r-none"
+                        />
+                        <Popover>
+                          <PopoverTrigger asChild>
                             <Button
                               variant="outline"
-                              className={cn(
-                                "w-full pl-3 text-left font-normal flex justify-between items-center",
-                                !field.value && "text-muted-foreground"
-                              )}
+                              className="rounded-l-none border-l-0"
                             >
-                              {field.value ? (
-                                format(field.value, "MM-dd-yyyy")
-                              ) : (
-                                <span>MM-DD-YYYY</span>
-                              )}
-                              <CalendarIcon className="h-4 w-4 opacity-50" />
+                              <CalendarIcon className="h-4 w-4" />
                             </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={field.value}
-                            onSelect={field.onChange}
-                            disabled={(date) =>
-                              date > new Date() || date < new Date("1900-01-01")
-                            }
-                            initialFocus
-                            className={cn("p-3 pointer-events-auto")}
-                          />
-                        </PopoverContent>
-                      </Popover>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-auto p-0" align="end">
+                            <Calendar
+                              mode="single"
+                              selected={field.value}
+                              onSelect={(date) => {
+                                handleCalendarSelect(date);
+                                // Auto-close the popover
+                                document.body.click();
+                              }}
+                              disabled={(date) =>
+                                date > new Date() || date < new Date("1900-01-01")
+                              }
+                              initialFocus
+                              className={cn("p-3 pointer-events-auto")}
+                            />
+                          </PopoverContent>
+                        </Popover>
+                      </div>
                       <FormDescription className="text-sm text-muted-foreground">
-                        Date
+                        Enter your date of birth in MM-DD-YYYY format.
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
