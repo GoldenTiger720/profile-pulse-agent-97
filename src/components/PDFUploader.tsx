@@ -27,7 +27,6 @@ interface PDFUploaderProps {
 const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
   const [pdfFiles, setPdfFiles] = useState<PDFFile[]>([]);
   const [isDragging, setIsDragging] = useState(false);
-  const [selectedFileId, setSelectedFileId] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
@@ -167,8 +166,6 @@ const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
     });
   }, [toast]);
 
-  const selectedFile = pdfFiles.find(f => f.id === selectedFileId);
-
   return (
     <div className="space-y-4">
       <div 
@@ -207,13 +204,8 @@ const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
                 <div className="flex flex-col space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <button 
-                        onClick={() => setSelectedFileId(selectedFileId === pdf.id ? null : pdf.id)}
-                        className="flex items-center gap-2 hover:text-primary transition-colors"
-                      >
-                        <FileType className="h-5 w-5 text-findmystage-green" />
-                        <span className="font-medium truncate max-w-[200px]">{pdf.file.name}</span>
-                      </button>
+                      <FileType className="h-5 w-5 text-findmystage-green" />
+                      <span className="font-medium truncate max-w-[200px]">{pdf.file.name}</span>
                       <span className="text-xs text-muted-foreground">
                         ({Math.round(pdf.file.size / 1024)} KB)
                       </span>
@@ -246,9 +238,7 @@ const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
                     </div>
                   </div>
 
-                  {selectedFileId === pdf.id && (
-                    <PDFPreview file={pdf.file} previewUrl={pdf.preview} />
-                  )}
+                  <PDFPreview file={pdf.file} previewUrl={pdf.preview} />
 
                   {pdf.uploading && (
                     <div className="space-y-2">
