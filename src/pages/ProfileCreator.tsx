@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
 import { AlertCircle, FileText, Youtube, Globe, Linkedin, BookOpen, ArrowRight } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
@@ -128,14 +127,16 @@ const ProfileCreator = () => {
         </div>
 
         <TabsContent value="input" className="space-y-6 min-h-[60vh]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ContentUploader 
-              icon={<FileText className="h-5 w-5 text-findmystage-green" />}
-              title="PDF Documents"
-              description="Upload PDFs of presentations, articles, or publications"
-              onFileChange={handleFileChange}
-              type="pdf"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-auto">
+            <div className="md:col-span-2">
+              <ContentUploader 
+                icon={<FileText className="h-5 w-5 text-findmystage-green" />}
+                title="PDF Documents"
+                description="Upload PDFs of presentations, articles, or publications"
+                onFileChange={handleFileChange}
+                type="pdf"
+              />
+            </div>
             
             <ContentUploader 
               icon={<Youtube className="h-5 w-5 text-findmystage-green" />}

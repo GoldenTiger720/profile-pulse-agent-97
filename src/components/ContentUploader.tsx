@@ -44,7 +44,7 @@ const ContentUploader: React.FC<ContentUploaderProps> = ({
   };
 
   return (
-    <Card className="input-section border-dashed">
+    <Card className="input-section border-dashed h-full">
       <CardHeader className="pb-2">
         <div className="flex items-center gap-2">
           {icon}

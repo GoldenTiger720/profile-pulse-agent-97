@@ -37,9 +37,9 @@ const PDFPreview: React.FC<PDFPreviewProps> = ({ file, previewUrl }) => {
   }
 
   return (
-    <div className="pdf-preview border rounded-md overflow-hidden mt-2">
-      <div className="bg-muted p-2 text-xs font-medium">PDF Preview</div>
-      <div className="flex justify-center items-center p-4 bg-muted/20">
+    <div className="pdf-preview border rounded-md overflow-hidden shadow-sm">
+      <div className="bg-muted p-2 text-xs font-medium">PDF Preview - {file.name}</div>
+      <div className="flex justify-center items-center p-4 bg-muted/20 h-[500px] overflow-auto">
         {isLoading && (
           <div className="flex flex-col items-center justify-center py-8">
             <Loader2 className="h-8 w-8 text-primary animate-spin mb-2" />

@@ -27,6 +27,7 @@ interface PDFUploaderProps {
 const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
   const [pdfFiles, setPdfFiles] = useState<PDFFile[]>([]);
   const [isDragging, setIsDragging] = useState(false);
+  const [selectedFileId, setSelectedFileId] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
@@ -166,8 +167,16 @@ const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
     });
   }, [toast]);
 
+  React.useEffect(() => {
+    if (pdfFiles.length > 0 && !selectedFileId) {
+      setSelectedFileId(pdfFiles[0].id);
+    }
+  }, [pdfFiles, selectedFileId]);
+
+  const selectedFile = pdfFiles.find(f => f.id === selectedFileId);
+
   return (
-    <div className="space-y-4">
+    <div className="flex flex-col space-y-4">
       <div 
         className={`border-2 border-dashed rounded-lg p-6 text-center ${
           isDragging ? 'border-primary bg-primary/5' : 'border-gray-300'
@@ -196,92 +205,113 @@ const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
       </div>
 
       {pdfFiles.length > 0 && (
-        <div className="space-y-4">
-          <h3 className="text-lg font-medium">PDF Files ({pdfFiles.length})</h3>
-          {pdfFiles.map((pdf) => (
-            <Card key={pdf.id} className="overflow-hidden">
-              <CardContent className="p-4">
-                <div className="flex flex-col space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <FileType className="h-5 w-5 text-findmystage-green" />
-                      <span className="font-medium truncate max-w-[200px]">{pdf.file.name}</span>
-                      <span className="text-xs text-muted-foreground">
-                        ({Math.round(pdf.file.size / 1024)} KB)
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      {!pdf.uploaded && !pdf.uploading && (
-                        <Button 
-                          size="sm" 
-                          onClick={() => uploadFile(pdf.id)}
-                          variant="outline" 
-                          className="gap-1"
-                        >
-                          <Upload className="h-3.5 w-3.5" />
-                          Upload
-                        </Button>
-                      )}
-                      {pdf.uploaded && (
-                        <span className="text-xs flex items-center text-green-600 gap-1">
-                          <Check className="h-3.5 w-3.5" /> Uploaded
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="md:w-1/2 space-y-4">
+            <h3 className="text-lg font-medium">PDF Files ({pdfFiles.length})</h3>
+            {pdfFiles.map((pdf) => (
+              <Card 
+                key={pdf.id} 
+                className={`overflow-hidden cursor-pointer transition-all ${selectedFileId === pdf.id ? 'ring-2 ring-primary' : ''}`}
+                onClick={() => setSelectedFileId(pdf.id)}
+              >
+                <CardContent className="p-4">
+                  <div className="flex flex-col space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <FileType className="h-5 w-5 text-findmystage-green" />
+                        <span className="font-medium truncate max-w-[200px]">{pdf.file.name}</span>
+                        <span className="text-xs text-muted-foreground">
+                          ({Math.round(pdf.file.size / 1024)} KB)
                         </span>
-                      )}
-                      <Button 
-                        size="sm" 
-                        variant="ghost"
-                        onClick={() => removeFile(pdf.id)}
-                        className="text-destructive hover:text-destructive hover:bg-destructive/10"
-                      >
-                        <X className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-
-                  <PDFPreview file={pdf.file} previewUrl={pdf.preview} />
-
-                  {pdf.uploading && (
-                    <div className="space-y-2">
-                      <div className="flex justify-between text-xs">
-                        <span>Uploading...</span>
-                        <span>{pdf.progress}%</span>
                       </div>
-                      <Progress value={pdf.progress} className="h-2" />
-                    </div>
-                  )}
-
-                  {pdf.error && (
-                    <Alert variant="destructive" className="py-2">
-                      <AlertCircle className="h-4 w-4" />
-                      <AlertDescription>{pdf.error}</AlertDescription>
-                    </Alert>
-                  )}
-
-                  {pdf.content && (
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <h4 className="text-sm font-medium">Content Preview</h4>
+                      <div className="flex items-center gap-2">
+                        {!pdf.uploaded && !pdf.uploading && (
+                          <Button 
+                            size="sm" 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              uploadFile(pdf.id);
+                            }}
+                            variant="outline" 
+                            className="gap-1"
+                          >
+                            <Upload className="h-3.5 w-3.5" />
+                            Upload
+                          </Button>
+                        )}
+                        {pdf.uploaded && (
+                          <span className="text-xs flex items-center text-green-600 gap-1">
+                            <Check className="h-3.5 w-3.5" /> Uploaded
+                          </span>
+                        )}
                         <Button 
                           size="sm" 
-                          variant="ghost" 
-                          onClick={() => copyContent(pdf.content || '')}
-                          className="h-6 gap-1"
+                          variant="ghost"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            removeFile(pdf.id);
+                          }}
+                          className="text-destructive hover:text-destructive hover:bg-destructive/10"
                         >
-                          <Copy className="h-3.5 w-3.5" />
-                          Copy
+                          <X className="h-4 w-4" />
                         </Button>
                       </div>
-                      <Textarea
-                        value={pdf.content}
-                        readOnly
-                        className="h-24 text-xs"
-                      />
                     </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+
+                    {pdf.uploading && (
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-xs">
+                          <span>Uploading...</span>
+                          <span>{pdf.progress}%</span>
+                        </div>
+                        <Progress value={pdf.progress} className="h-2" />
+                      </div>
+                    )}
+
+                    {pdf.error && (
+                      <Alert variant="destructive" className="py-2">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertDescription>{pdf.error}</AlertDescription>
+                      </Alert>
+                    )}
+
+                    {pdf.content && (
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <h4 className="text-sm font-medium">Content Preview</h4>
+                          <Button 
+                            size="sm" 
+                            variant="ghost" 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              copyContent(pdf.content || '');
+                            }}
+                            className="h-6 gap-1"
+                          >
+                            <Copy className="h-3.5 w-3.5" />
+                            Copy
+                          </Button>
+                        </div>
+                        <Textarea
+                          value={pdf.content}
+                          readOnly
+                          className="h-24 text-xs"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="md:w-1/2">
+            {selectedFile && (
+              <div className="sticky top-4">
+                <PDFPreview file={selectedFile.file} previewUrl={selectedFile.preview} />
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
