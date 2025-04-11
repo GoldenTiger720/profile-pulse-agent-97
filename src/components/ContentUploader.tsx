@@ -1,9 +1,8 @@
-
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import PDFUploader from './PDFUploader';
-import YouTubePreview from './YouTubePreview';
+import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import PDFUploader from "./PDFUploader";
+import YouTubePreview from "./YouTubePreview";
 
 interface ContentUploaderProps {
   icon: React.ReactNode;
@@ -16,7 +15,7 @@ interface ContentUploaderProps {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
   };
-  type?: 'pdf' | 'youtube' | 'default';
+  type?: "pdf" | "youtube" | "default";
 }
 
 const ContentUploader: React.FC<ContentUploaderProps> = ({
@@ -25,7 +24,7 @@ const ContentUploader: React.FC<ContentUploaderProps> = ({
   description,
   onFileChange,
   inputProps,
-  type = 'default'
+  type = "default",
 }) => {
   const handleFilesUploaded = (files: File[]) => {
     if (onFileChange) {
@@ -36,9 +35,9 @@ const ContentUploader: React.FC<ContentUploaderProps> = ({
   const handleYouTubeChange = (url: string) => {
     if (inputProps?.onChange) {
       const event = {
-        target: { name: inputProps.name, value: url }
+        target: { name: inputProps.name, value: url },
       } as React.ChangeEvent<HTMLInputElement>;
-      
+
       inputProps.onChange(event);
     }
   };
@@ -53,19 +52,19 @@ const ContentUploader: React.FC<ContentUploaderProps> = ({
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="text-sm text-muted-foreground">{description}</p>
-        
-        {type === 'pdf' && onFileChange && (
+
+        {type === "pdf" && onFileChange && (
           <PDFUploader onFilesUploaded={handleFilesUploaded} />
         )}
-        
-        {type === 'youtube' && inputProps && (
-          <YouTubePreview 
-            url={inputProps.value} 
-            onChange={handleYouTubeChange} 
+
+        {type === "youtube" && inputProps && (
+          <YouTubePreview
+            url={inputProps.value}
+            onChange={handleYouTubeChange}
           />
         )}
-        
-        {type === 'default' && inputProps && (
+
+        {type === "default" && inputProps && (
           <Input
             name={inputProps.name}
             value={inputProps.value}

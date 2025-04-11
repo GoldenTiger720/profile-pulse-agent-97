@@ -152,27 +152,6 @@ const Index = () => {
         "We are looking for Founders, CEOs, and Presidents to share their compelling brand stories.",
       avatarSrc: "/images/avatar/Kent-Emmons.jpeg",
     },
-    {
-      name: "Sarah Johnson",
-      category: "Marketing and Branding",
-      mediaOutlet: "Forbes",
-      requirement: "Looking for experts to discuss AI integration in content marketing strategies.",
-      avatarSrc: "/images/avatar/Ryan-Schatchner.jpeg",
-    },
-    {
-      name: "David Chen",
-      category: "Technology",
-      mediaOutlet: "TechCrunch",
-      requirement: "Seeking insights on the future of quantum computing from industry leaders.",
-      avatarSrc: "/images/avatar/Les-Whitney.jpeg",
-    },
-    {
-      name: "Maria Rodriguez",
-      category: "Sustainability",
-      mediaOutlet: "GreenBiz",
-      requirement: "Need expertise on implementing sustainable practices in manufacturing.",
-      avatarSrc: "/images/avatar/makin.jpg",
-    },
   ];
 
   const caseStudies = [
@@ -434,7 +413,6 @@ const Index = () => {
                         mediaOutlet={speaker.mediaOutlet}
                         requirement={speaker.requirement}
                         avatarSrc={speaker.avatarSrc}
-                        index={index}
                       />
                     ))}
                   </div>
@@ -447,7 +425,6 @@ const Index = () => {
                         mediaOutlet={speaker.mediaOutlet}
                         requirement={speaker.requirement}
                         avatarSrc={speaker.avatarSrc}
-                        index={index + speakerData.length}
                       />
                     ))}
                   </div>
@@ -461,10 +438,10 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-16 relative z-10">
+      <section className="py-20 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 items-center">
               <div className="relative image-container-3d">
                 <img
                   src="/images/people-taking-part-high-protocol-event.jpg"
@@ -524,6 +501,58 @@ const Index = () => {
                     </Link>
                   </Button>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 mt-16">
+          <Separator className="max-w-6xl mx-auto h-px bg-border/60" />
+        </div>
+      </section>
+
+      <section className="py-16 relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-6">
+                <div className="bg-card/70 backdrop-blur-sm text-sm inline-block py-1 px-3 rounded-md mb-2">
+                  Author Resources
+                </div>
+                <h2 className="text-6xl font-bold">Author Resources</h2>
+                <h3 className="text-3xl font-medium">
+                  Live trainings from <br />
+                  industry experts.
+                </h3>
+
+                <p className="text-xl">
+                  <span className="font-bold">Become an Author of Impact.</span>{" "}
+                  We provide authors with dozens of resources, training, &
+                  assets to make your book a platform of influence.
+                </p>
+
+                <p className="text-xl font-bold">
+                  Ghostwriting. Publishing. Marketing.
+                </p>
+
+                <p className="text-xl mt-8">DIY or 100% Done for you.</p>
+
+                <Button
+                  asChild
+                  size="lg"
+                  className="rounded-full mt-6 bg-findmystage-green hover:bg-findmystage-green/90"
+                >
+                  <Link to="/resources">
+                    Access Resources <ArrowRight className="ml-2" />
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="relative">
+                <img
+                  src="/images/AF-Graphics-Author-Resources-2-768x553.png"
+                  alt="Author resources with laptop, books and coffee cup"
+                  className="w-full h-auto rounded-lg shadow-xl"
+                />
               </div>
             </div>
           </div>

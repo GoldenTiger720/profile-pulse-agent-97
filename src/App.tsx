@@ -4,8 +4,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProfileCreator from "./pages/ProfileCreator";
 import DatabasePage from "./pages/DatabasePage";
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
 import { Layout } from "./components/Layout";
 import Providers from "./components/Providers";
 
@@ -17,8 +15,6 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/profile" element={<ProfileCreator />} />
           <Route path="/database" element={<DatabasePage />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/resources" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

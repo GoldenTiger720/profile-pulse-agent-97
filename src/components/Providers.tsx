@@ -1,20 +1,29 @@
 
 import React from 'react';
 import { ThemeProvider } from '@/contexts/ThemeContext';
-import { ApiKeyProvider } from '@/contexts/ApiKeyContext';
-import { AuthProvider } from '@/contexts/AuthContext';
-import { Toaster } from 'sonner';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
-const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+// Create a query client instance
+const queryClient = new QueryClient();
+
+interface ProvidersProps {
+  children: React.ReactNode;
+}
+
+const Providers: React.FC<ProvidersProps> = ({ children }) => {
   return (
-    <ThemeProvider>
-      <ApiKeyProvider>
-        <AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
           {children}
-          <Toaster position="top-right" richColors />
-        </AuthProvider>
-      </ApiKeyProvider>
-    </ThemeProvider>
+        </TooltipProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 

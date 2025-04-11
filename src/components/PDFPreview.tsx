@@ -1,15 +1,10 @@
-
-import React, { useState } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
-import { Loader2 } from 'lucide-react';
-import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
-import 'react-pdf/dist/esm/Page/TextLayer.css';
+import React, { useState, useEffect } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
+import { Loader2 } from "lucide-react";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
 
 // Set up the worker for PDF.js
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.js',
-  import.meta.url
-).toString();
 
 interface PDFPreviewProps {
   file: File | null;
@@ -20,6 +15,11 @@ const PDFPreview: React.FC<PDFPreviewProps> = ({ file, previewUrl }) => {
   const [numPages, setNumPages] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [pdf_file, setPDFile] = useState(file);
+
+  useEffect(() => {
+    pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+  });
 
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
@@ -27,8 +27,8 @@ const PDFPreview: React.FC<PDFPreviewProps> = ({ file, previewUrl }) => {
   };
 
   const onDocumentLoadError = (err: Error) => {
-    console.error('Error loading PDF:', err);
-    setError('Failed to load PDF');
+    console.error("Error loading PDF:", err);
+    setError("Failed to load PDF");
     setIsLoading(false);
   };
 
@@ -38,7 +38,9 @@ const PDFPreview: React.FC<PDFPreviewProps> = ({ file, previewUrl }) => {
 
   return (
     <div className="pdf-preview border rounded-md overflow-hidden shadow-sm">
-      <div className="bg-muted p-2 text-xs font-medium">PDF Preview - {file.name}</div>
+      <div className="bg-muted p-2 text-xs font-medium">
+        PDF Preview - {file.name}
+      </div>
       <div className="flex justify-center items-center p-4 bg-muted/20 h-[500px] overflow-auto">
         {isLoading && (
           <div className="flex flex-col items-center justify-center py-8">
@@ -53,8 +55,8 @@ const PDFPreview: React.FC<PDFPreviewProps> = ({ file, previewUrl }) => {
           loading={null}
         >
           {!isLoading && !error && (
-            <Page 
-              pageNumber={1} 
+            <Page
+              pageNumber={1}
               renderTextLayer={false}
               renderAnnotationLayer={false}
               scale={0.8}
