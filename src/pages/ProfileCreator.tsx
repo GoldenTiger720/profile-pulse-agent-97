@@ -33,7 +33,7 @@ const ProfileCreator = () => {
     linkedinUrl: "",
     bookUrl: "",
   });
-  const [pdfFiles, setPdfFiles] = useState<File[]>([]);
+  const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [currentStep, setCurrentStep] = useState("input");
   const [profileData, setProfileData] = useState<ProfileData | null>(null);
@@ -46,13 +46,12 @@ const ProfileCreator = () => {
   };
 
   const handleFileChange = (files: File[]) => {
-    setPdfFiles((prev) => [...prev, ...files]);
+    setPdfFile(files.length > 0 ? files[0] : null);
   };
 
   const handleAnalyze = async () => {
-    // Check if at least one input is provided
     const hasInput =
-      pdfFiles.length > 0 ||
+      pdfFile !== null ||
       Object.values(inputUrls).some((url) => url.trim() !== "");
     if (!hasInput) {
       toast({
@@ -73,22 +72,18 @@ const ProfileCreator = () => {
     setCurrentStep("profile");
 
     try {
-      // Build content object to analyze
       const formData = new FormData();
 
-      // Add PDF files
-      pdfFiles.forEach((file, index) => {
-        formData.append(`pdf_files`, file);
-      });
+      if (pdfFile) {
+        formData.append("pdf_files", pdfFile);
+      }
 
-      // Add URLs
       Object.entries(inputUrls).forEach(([key, value]) => {
         if (value.trim() !== "") {
           formData.append(key, value);
         }
       });
 
-      // Call our service to analyze content
       const response = await axios.post(
         "http://localhost:8000/api/v1/profiles/create",
         formData,
@@ -159,7 +154,7 @@ const ProfileCreator = () => {
               <ContentUploader
                 icon={<FileText className="h-5 w-5 text-findmystage-green" />}
                 title="PDF Documents"
-                description="Upload PDFs of presentations, articles, or publications"
+                description="Upload a PDF of a presentation, article, or publication"
                 onFileChange={handleFileChange}
                 type="pdf"
               />
