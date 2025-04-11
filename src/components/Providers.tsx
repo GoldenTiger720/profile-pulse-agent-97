@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ThemeProvider } from '@/contexts/ThemeContext';
+import { ApiKeyProvider } from '@/contexts/ApiKeyContext';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -17,11 +18,13 @@ const Providers: React.FC<ProvidersProps> = ({ children }) => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          {children}
-        </TooltipProvider>
+        <ApiKeyProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            {children}
+          </TooltipProvider>
+        </ApiKeyProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

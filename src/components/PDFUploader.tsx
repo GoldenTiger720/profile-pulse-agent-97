@@ -3,14 +3,12 @@ import React, { useState, useRef, useCallback } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Textarea } from "@/components/ui/textarea";
 import {
   AlertCircle,
   File,
   Upload,
   X,
   Check,
-  Copy,
   FileType,
 } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -178,17 +176,6 @@ const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
     onFilesUploaded([]); // Clear files in parent component
   }, [pdfFile, onFilesUploaded]);
 
-  const copyContent = useCallback(
-    (content: string) => {
-      navigator.clipboard.writeText(content);
-      toast({
-        title: "Content copied",
-        description: "File content has been copied to clipboard",
-      });
-    },
-    [toast]
-  );
-
   return (
     <div className="flex flex-col space-y-4">
       <div
@@ -205,7 +192,6 @@ const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
           onChange={handleFileChange}
           className="hidden"
           accept=".pdf"
-          // Changed to single selection
         />
         <File className="h-12 w-12 mx-auto text-findmystage-green mb-4" />
         <h3 className="text-lg font-medium mb-2">
@@ -222,7 +208,7 @@ const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
 
       {pdfFile && (
         <div className="flex flex-col md:flex-row gap-4">
-          <div className="md:w-1/2 space-y-4">
+          <div className="md:w-full space-y-4">
             <h3 className="text-lg font-medium">
               Selected PDF File
             </h3>
@@ -282,30 +268,6 @@ const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
                       <AlertCircle className="h-4 w-4" />
                       <AlertDescription>{pdfFile.error}</AlertDescription>
                     </Alert>
-                  )}
-
-                  {pdfFile.content && (
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <h4 className="text-sm font-medium">
-                          Content Preview
-                        </h4>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          onClick={() => copyContent(pdfFile.content || "")}
-                          className="h-6 gap-1"
-                        >
-                          <Copy className="h-3.5 w-3.5" />
-                          Copy
-                        </Button>
-                      </div>
-                      <Textarea
-                        value={pdfFile.content}
-                        readOnly
-                        className="h-24 text-xs"
-                      />
-                    </div>
                   )}
                 </div>
               </CardContent>

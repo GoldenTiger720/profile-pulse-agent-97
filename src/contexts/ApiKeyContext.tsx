@@ -11,16 +11,18 @@ interface ApiKeyContextType {
 
 const ApiKeyContext = createContext<ApiKeyContextType | undefined>(undefined);
 
+// This is the API key we'll use for OpenAI
+const OPENAI_API_KEY = "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";
+
 export const ApiKeyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [apiKey, setApiKey] = useState<string | null>(null);
-  const [isKeyValid, setIsKeyValid] = useState<boolean>(false);
+  const [apiKey, setApiKey] = useState<string | null>(OPENAI_API_KEY);
+  const [isKeyValid, setIsKeyValid] = useState<boolean>(true); // Assume valid initially
   const { toast } = useToast();
 
   useEffect(() => {
-    const storedKey = localStorage.getItem('openai_api_key');
-    if (storedKey) {
-      setApiKey(storedKey);
-      checkKeyValidity(storedKey);
+    // No need to check localStorage since we're using a hardcoded key
+    if (apiKey) {
+      checkKeyValidity(apiKey);
     }
   }, []);
 
@@ -39,15 +41,7 @@ export const ApiKeyProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       const valid = response.status === 200;
       setIsKeyValid(valid);
       
-      if (valid && key !== apiKey) {
-        localStorage.setItem('openai_api_key', key);
-        setApiKey(key);
-        toast({
-          title: "API Key Validated",
-          description: "Your OpenAI API key has been successfully validated.",
-          variant: "default"
-        });
-      } else if (!valid) {
+      if (!valid) {
         toast({
           title: "Invalid API Key",
           description: "The provided OpenAI API key is invalid.",
@@ -70,7 +64,6 @@ export const ApiKeyProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   const saveApiKey = (key: string) => {
     setApiKey(key);
-    localStorage.setItem('openai_api_key', key);
   };
 
   return (
