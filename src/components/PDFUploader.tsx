@@ -1,13 +1,13 @@
-
 import React, { useState, useRef, useCallback } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Textarea } from '@/components/ui/textarea';
-import { AlertCircle, File, Upload, X, Check, Copy } from 'lucide-react';
+import { AlertCircle, File, Upload, X, Check, Copy, FileType } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useToast } from '@/hooks/use-toast';
 import axios from 'axios';
+import PDFPreview from './PDFPreview';
 
 interface PDFFile {
   file: File;
@@ -27,6 +27,7 @@ interface PDFUploaderProps {
 const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
   const [pdfFiles, setPdfFiles] = useState<PDFFile[]>([]);
   const [isDragging, setIsDragging] = useState(false);
+  const [selectedFileId, setSelectedFileId] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
@@ -166,6 +167,8 @@ const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
     });
   }, [toast]);
 
+  const selectedFile = pdfFiles.find(f => f.id === selectedFileId);
+
   return (
     <div className="space-y-4">
       <div 
@@ -204,8 +207,13 @@ const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
                 <div className="flex flex-col space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <File className="h-5 w-5 text-findmystage-green" />
-                      <span className="font-medium truncate max-w-[200px]">{pdf.file.name}</span>
+                      <button 
+                        onClick={() => setSelectedFileId(selectedFileId === pdf.id ? null : pdf.id)}
+                        className="flex items-center gap-2 hover:text-primary transition-colors"
+                      >
+                        <FileType className="h-5 w-5 text-findmystage-green" />
+                        <span className="font-medium truncate max-w-[200px]">{pdf.file.name}</span>
+                      </button>
                       <span className="text-xs text-muted-foreground">
                         ({Math.round(pdf.file.size / 1024)} KB)
                       </span>
@@ -237,6 +245,10 @@ const PDFUploader: React.FC<PDFUploaderProps> = ({ onFilesUploaded }) => {
                       </Button>
                     </div>
                   </div>
+
+                  {selectedFileId === pdf.id && (
+                    <PDFPreview file={pdf.file} previewUrl={pdf.preview} />
+                  )}
 
                   {pdf.uploading && (
                     <div className="space-y-2">
